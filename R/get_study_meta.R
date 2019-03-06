@@ -1,0 +1,32 @@
+#' Get Study Meta
+#'
+#' @param study_id
+#' @return
+#' @export
+
+get_study_meta <- function(study_id)
+{
+  study_meta <-
+    httr::GET(
+      paste0(BASE_URL,
+             '/studies/',
+             study_id,
+             '/meta-info'),
+      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
+    )
+
+
+  study_meta_parse <- study_meta %>% httr::content('parsed')
+
+  study_meta_tibble <-
+    dplyr::tibble(status = study_meta_parse$data[[1]],
+                  release_date = study_meta_parse$data[[2]])
+
+  study_meta_tibble$status <-
+    gsub('status:', '', study_meta_tibble$status)
+  study_meta_tibble$release_date <-
+    gsub('release-date:', '', study_meta_tibble$release_date)
+
+  return(study_meta_tibble)
+
+}
