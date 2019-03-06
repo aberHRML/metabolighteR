@@ -2,5 +2,6 @@
 
 export(get_studies)
 export(get_study_files)
+export(get_study_meta)
 export(get_webservice)
 export(set_api_token)
