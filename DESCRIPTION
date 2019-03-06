@@ -10,7 +10,9 @@ Depends:
 Imports:
     httr,
     dplyr,
-    purrr
+    purrr,
+    xml2,
+    rvest
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
