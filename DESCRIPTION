@@ -1,0 +1,15 @@
+Package: metabolighteR
+Type: Package
+Title: R Interface to the Metabolights RESTful API
+Version: 0.1.0
+Authors@R: c(
+    person("Tom", "Wilson", , "tpw2@aber.ac.uk", c("aut", "cre")))
+Description: Access to the Metabolights RESTful API <https://www.ebi.ac.uk:443/metabolights/ws>
+Depends:
+    magrittr
+Imports:
+    httr
+    dplyr
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
