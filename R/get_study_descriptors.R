@@ -1,0 +1,31 @@
+#' Get Study Descriptors
+#'
+#' @param study_id
+#' @return
+#' @export
+
+get_study_descriptors <- function(study_id)
+{
+  study_dcpts <-
+    httr::GET(
+      paste0(BASE_URL,
+             '/studies/',
+             study_id,
+             '/descriptors'),
+      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
+    )
+
+
+  study_dcpts_parse <- study_dcpts %>% httr::content('parsed')
+
+
+  length(study_dcpts_parse$studyDesignDescriptors)
+
+  study_dcpts_tibble <-
+    purrr::map(study_dcpts_parse$studyDesignDescriptors, ~ {
+      unlist(.) %>% t() %>% dplyr::as_tibble()
+    }) %>% dplyr::bind_rows()
+
+  return(study_dcpts_tibble)
+
+}
