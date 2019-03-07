@@ -3,6 +3,7 @@
 export(get_studies)
 export(get_study_contacts)
 export(get_study_desc)
+export(get_study_descriptors)
 export(get_study_factors)
 export(get_study_files)
 export(get_study_meta)
