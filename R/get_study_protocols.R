@@ -1,7 +1,7 @@
 #' Get Study Protocols
 #'
-#' @param study_id
-#' @return
+#' @param study_id A character string of a valid MTBLS study id
+#' @return a `tibble` of study protocols
 #' @export
 
 get_study_protocols <- function(study_id)

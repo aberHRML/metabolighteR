@@ -1,7 +1,7 @@
 #' Get Study Meta
 #'
-#' @param study_id
-#' @return
+#' @param study_id A character string of a valid MTBLS study id
+#' @return a `tibble` of study meta data
 #' @export
 
 get_study_meta <- function(study_id)

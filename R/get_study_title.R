@@ -1,7 +1,7 @@
 #' Get Study Title
 #'
-#' @param study_id
-#' @return
+#' @param study_id A character string of a valid MTBLS study id
+#' @return a character string of the study title
 #' @export
 
 get_study_title <- function(study_id)

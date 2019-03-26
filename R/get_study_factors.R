@@ -1,7 +1,7 @@
 #' Get Study Factors
 #'
-#' @param study_id
-#' @return
+#' @param study_id A character string of a valid MTBLS study id
+#' @return a `tibble` of study factors
 #' @export
 
 get_study_factors <- function(study_id)

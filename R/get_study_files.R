@@ -1,8 +1,8 @@
 #' Get Study Files
 #'
-#' @param study_id
-#' @param raw_data
-#' @return a `tibble`
+#' @param study_id A character string of a valid MTBLS study id
+#' @param raw_data logical; if `TRUE` then raw data file info is also returned. (Default is `FALSE`)
+#' @return a `tibble` of file info
 #' @export
 
 get_study_files <- function(study_id, raw_data = FALSE)
