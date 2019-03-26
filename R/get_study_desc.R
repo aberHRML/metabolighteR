@@ -1,7 +1,7 @@
 #' Get Study Description
 #'
-#' @param study_id
-#' @return
+#' @param study_id A character string of a valid MTBLS study id
+#' @return a character string of the study description
 #' @export
 
 get_study_desc <- function(study_id)
@@ -21,5 +21,3 @@ get_study_desc <- function(study_id)
   return(rvest::html_text(xml2::read_html(study_desc_parse$description)))
 
 }
-
-
