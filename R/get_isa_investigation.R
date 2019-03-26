@@ -1,8 +1,7 @@
 #' Get ISA Investigation File
 #'
-#' @param study_id
-#' @param outpath
-#' @return
+#' @param study_id A character string of a valid MTBLS study id
+#' @param outpath A character string of a filepath where the ISA Investigation `.txt` file will be saved to
 #' @export
 
 get_isa_investigation <- function(study_id, outpath)
@@ -17,13 +16,13 @@ get_isa_investigation <- function(study_id, outpath)
     )
 
 
-  isa_investigation_parse <- isa_investigation %>% httr::content('text')
+  isa_investigation_parse <-
+    isa_investigation %>% httr::content('text')
 
-  isa_clean <- rvest::html_text(xml2::read_html(isa_investigation_parse))
+  isa_clean <-
+    rvest::html_text(xml2::read_html(isa_investigation_parse))
 
   writeLines(isa_clean, con = paste0(outpath, '/', study_id, '_ISA.txt'))
 
   return(invisible(NULL))
 }
-
-
