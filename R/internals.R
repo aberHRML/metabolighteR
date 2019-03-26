@@ -1,7 +1,7 @@
 #' Parse Protocol Annotation Values
 #'
-#' @param x
-#' @return
+#' @param x the `httr` parsed output from `get_study_protocols`
+#' @return a character string of protocol annotations
 #' @keywords internal
 
 protocols_annotation <- function(x)
