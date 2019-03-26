@@ -6,6 +6,12 @@
 \usage{
 get_study_pubs(study_id)
 }
+\arguments{
+\item{study_id}{A character string of a valid MTBLS study id}
+}
+\value{
+a `tibble` of study publicatons
+}
 \description{
 Get Study Publications
 }

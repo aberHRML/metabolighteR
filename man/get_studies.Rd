@@ -10,5 +10,5 @@ get_studies()
 a `tibble` of Study IDs
 }
 \description{
-Get Studies
+Retrieve a list of all available MTBLS Study ID's
 }

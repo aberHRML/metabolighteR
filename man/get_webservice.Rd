@@ -7,7 +7,7 @@
 get_webservice()
 }
 \value{
-a list
+a list of the MTBLS webservice information
 }
 \description{
 Get Web-service details

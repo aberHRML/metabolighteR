@@ -2,10 +2,27 @@
 % Please edit documentation in R/set_api_token.R
 \name{set_api_token}
 \alias{set_api_token}
-\title{Load API Token}
+\title{Set API Token}
 \usage{
 set_api_token(API_KEY = NULL)
 }
+\arguments{
+\item{API_KEY}{a character string of your Metabolights API Token (Default is `NULL`)}
+}
 \description{
-Load API Token
+Set your Metabolights API Token as global option. If `MTBLS_API_KEY` is set in `.Renviron` then this variable will be passed directly
+to the `MTBLS_API_KEY` option. If no `MTBLS_API_KEY` is set in `.Renviron`, then the API Token must be passed as an input in the `set_api_token`
+function
+}
+\examples{
+\dontrun{
+
+# If API Token is set in `.Renviron`
+
+set_api_token()
+
+# If API Token is not set in `.Renviron`
+
+set_api_token(API_KEY = 'XXXX-0000-XXXX-0000')
+}
 }

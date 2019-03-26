@@ -6,6 +6,12 @@
 \usage{
 get_study_contacts(study_id)
 }
+\arguments{
+\item{study_id}{a character string of a valid MTBLS study id}
+}
+\value{
+a `tibble` of study contacts
+}
 \description{
 Get Study Contacts
 }

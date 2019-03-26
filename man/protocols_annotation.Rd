@@ -6,6 +6,12 @@
 \usage{
 protocols_annotation(x)
 }
+\arguments{
+\item{x}{the `httr` parsed output from `get_study_protocols`}
+}
+\value{
+a character string of protocol annotations
+}
 \description{
 Parse Protocol Annotation Values
 }

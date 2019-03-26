@@ -6,6 +6,12 @@
 \usage{
 get_study_meta(study_id)
 }
+\arguments{
+\item{study_id}{A character string of a valid MTBLS study id}
+}
+\value{
+a `tibble` of study meta data
+}
 \description{
 Get Study Meta
 }

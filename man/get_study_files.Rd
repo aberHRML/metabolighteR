@@ -6,8 +6,13 @@
 \usage{
 get_study_files(study_id, raw_data = FALSE)
 }
+\arguments{
+\item{study_id}{A character string of a valid MTBLS study id}
+
+\item{raw_data}{logical; if `TRUE` then raw data file info is also returned. (Default is `FALSE`)}
+}
 \value{
-a `tibble`
+a `tibble` of file info
 }
 \description{
 Get Study Files

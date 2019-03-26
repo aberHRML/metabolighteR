@@ -6,6 +6,12 @@
 \usage{
 get_study_desc(study_id)
 }
+\arguments{
+\item{study_id}{A character string of a valid MTBLS study id}
+}
+\value{
+a character string of the study description
+}
 \description{
 Get Study Description
 }

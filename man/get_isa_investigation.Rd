@@ -6,6 +6,11 @@
 \usage{
 get_isa_investigation(study_id, outpath)
 }
+\arguments{
+\item{study_id}{A character string of a valid MTBLS study id}
+
+\item{outpath}{A character string of a filepath where the ISA Investigation `.txt` file will be saved to}
+}
 \description{
 Get ISA Investigation File
 }

@@ -6,6 +6,12 @@
 \usage{
 get_study_factors(study_id)
 }
+\arguments{
+\item{study_id}{A character string of a valid MTBLS study id}
+}
+\value{
+a `tibble` of study factors
+}
 \description{
 Get Study Factors
 }
