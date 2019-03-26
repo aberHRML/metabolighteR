@@ -15,7 +15,7 @@
 #'
 #' # If API Token is not set in `.Renviron`
 #'
-#' set_api_token(API_KEY = 'XXXX-0000-XXXX-0000)
+#' set_api_token(API_KEY = 'XXXX-0000-XXXX-0000')
 #' }
 
 set_api_token <- function(API_KEY = NULL)
