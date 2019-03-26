@@ -1,7 +1,22 @@
-#' Load API Token
+#' Set API Token
 #'
-#' @param API_KEY
+#' Set your Metabolights API Token as global option. If `MTBLS_API_KEY` is set in `.Renviron` then this variable will be passed directly
+#' to the `MTBLS_API_KEY` option. If no `MTBLS_API_KEY` is set in `.Renviron`, then the API Token must be passed as an input in the `set_api_token`
+#' function
+#'
+#' @param API_KEY a character string of your Metabolights API Token (Default is `NULL`)
 #' @export
+#' @examples
+#' \dontrun{
+#'
+#' # If API Token is set in `.Renviron`
+#'
+#' set_api_token()
+#'
+#' # If API Token is not set in `.Renviron`
+#'
+#' set_api_token(API_KEY = 'XXXX-0000-XXXX-0000)
+#' }
 
 set_api_token <- function(API_KEY = NULL)
 {
