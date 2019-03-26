@@ -1,7 +1,7 @@
 #' Get Study Contacts
 #'
-#' @param study_id
-#' @return
+#' @param study_id a character string of a valid MTBLS study id
+#' @return a `tibble` of study contacts
 #' @export
 
 get_study_contacts <- function(study_id)
