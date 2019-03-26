@@ -1,10 +1,11 @@
 #' Get Studies
 #'
+#' Retrieve a list of all available MTBLS Study ID's
+#'
 #' @return a `tibble` of Study IDs
 #' @export
 
-get_studies <- function(){
-
+get_studies <- function() {
   studies <-
     httr::GET(paste0(BASE_URL, '/studies')) %>% httr::content('parsed')
 
