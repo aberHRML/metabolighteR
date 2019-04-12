@@ -36,5 +36,3 @@ library(metabolighteR)
 set_api_token("<your-api-token_here>")
 ```
 
-
-
