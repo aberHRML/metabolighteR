@@ -3,3 +3,5 @@
 ^\.travis\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+NOTES.md
+cran-comments.md
