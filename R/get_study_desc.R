@@ -18,6 +18,6 @@ get_study_desc <- function(study_id)
 
   study_desc_parse <- study_desc %>% httr::content('parsed')
 
-  return(rvest::html_text(xml2::read_html(study_desc_parse$description)))
+  return(study_desc_parse$description)
 
 }
