@@ -2,10 +2,6 @@
   function(libname = find.package('metabolighteR'),
            pkgname = 'metabolighteR')
   {
-    assign('BASE_URL',
-           'https://www.ebi.ac.uk:443/metabolights/ws',
-           envir = .GlobalEnv)
+    options('BASE_URL' = 'https://www.ebi.ac.uk:443/metabolights/ws')
 
   }
-
-
