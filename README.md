@@ -25,7 +25,7 @@ Then once you load the library; you can set the API Token as an option variable.
 ```r
 library(metabolighteR)
 
-set_api_token()
+mtbls_key()
 ```
 
 If you haven't added your API Token to the .Renviron; the the API Token can be set as an option by passing the API Token as an argumnet in the `set_api_token` function.
@@ -33,6 +33,6 @@ If you haven't added your API Token to the .Renviron; the the API Token can be s
 ```r
 library(metabolighteR)
 
-set_api_token("<your-api-token_here>")
+mtbls_key("<your-api-token_here>")
 ```
 
