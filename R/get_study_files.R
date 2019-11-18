@@ -12,7 +12,7 @@ get_study_files <- function(study_id, raw_data = FALSE)
     study_files <-
       httr::GET(
         paste0(
-          BASE_URL,
+          getOption('BASE_URL'),
           '/studies/',
           study_id,
           '/files?include_raw_data=false'
@@ -25,7 +25,7 @@ get_study_files <- function(study_id, raw_data = FALSE)
     study_files <-
       httr::GET(
         paste0(
-          BASE_URL,
+          getOption('BASE_URL'),
           '/studies/',
           study_id,
           '/files?include_raw_data=true'

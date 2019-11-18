@@ -8,7 +8,7 @@ get_study_pubs <- function(study_id)
 {
   study_pubs <-
     httr::GET(
-      paste0(BASE_URL,
+      paste0(getOption('BASE_URL'),
              '/studies/',
              study_id,
              '/publications'),

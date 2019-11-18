@@ -7,7 +7,7 @@
 
 get_studies <- function() {
   studies <-
-    httr::GET(paste0(BASE_URL, '/studies')) %>% httr::content('parsed')
+    httr::GET(paste0(getOption('BASE_URL'), '/studies')) %>% httr::content('parsed')
 
   study_tibble <- dplyr::tibble(unlist(studies))
   names(study_tibble) <- 'study'

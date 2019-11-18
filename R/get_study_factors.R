@@ -8,7 +8,7 @@ get_study_factors <- function(study_id)
 {
   study_fcts <-
     httr::GET(
-      paste0(BASE_URL,
+      paste0(getOption('BASE_URL'),
              '/studies/',
              study_id,
              '/factors'),

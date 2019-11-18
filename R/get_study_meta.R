@@ -8,7 +8,7 @@ get_study_meta <- function(study_id)
 {
   study_meta <-
     httr::GET(
-      paste0(BASE_URL,
+      paste0(getOption('BASE_URL'),
              '/studies/',
              study_id,
              '/meta-info'),
