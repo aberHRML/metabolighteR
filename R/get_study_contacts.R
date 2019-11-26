@@ -3,6 +3,10 @@
 #' @param study_id a character string of a valid MTBLS study id
 #' @return a `tibble` of study contacts
 #' @export
+#' @examples
+#' \dontrun{
+#' get_study_contacts('MTBLS375')
+#' }
 
 get_study_contacts <- function(study_id)
 {

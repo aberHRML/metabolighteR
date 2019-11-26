@@ -3,6 +3,10 @@
 #' @param study_id A character string of a valid MTBLS study id
 #' @param outpath A character string of a filepath where the ISA Investigation `.txt` file will be saved to
 #' @export
+#' @examples
+#' \dontrun{
+#' get_isa_investigation('MTBLS375', 'local_directory/')
+#' }
 
 get_isa_investigation <- function(study_id, outpath)
 {

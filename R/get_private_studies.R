@@ -2,6 +2,10 @@
 #'
 #' @return a `tibble` of your private Study IDs
 #' @export
+#' @examples
+#' \dontrun{
+#' get_private_studies()
+#' }
 
 get_private_studies <- function()
 {

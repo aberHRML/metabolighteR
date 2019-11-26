@@ -3,6 +3,10 @@
 #' @param study_id A character string of a valid MTBLS study id
 #' @return a character string of the study description
 #' @export
+#' @examples
+#' \dontrun{
+#' get_study_desc('MTBLS375')
+#' }
 
 get_study_desc <- function(study_id)
 {

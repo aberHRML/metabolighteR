@@ -4,6 +4,8 @@
 #'
 #' @return a `tibble` of Study IDs
 #' @export
+#' @examples
+#' get_studies()
 
 get_studies <- function() {
   studies <-

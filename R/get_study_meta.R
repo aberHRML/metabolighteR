@@ -3,6 +3,10 @@
 #' @param study_id A character string of a valid MTBLS study id
 #' @return a `tibble` of study meta data
 #' @export
+#' @examples
+#' \dontrun{
+#' get_study_meta('MTBLS375')
+#' }
 
 get_study_meta <- function(study_id)
 {
