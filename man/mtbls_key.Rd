@@ -7,11 +7,11 @@
 mtbls_key(API_KEY = NULL)
 }
 \arguments{
-\item{API_KEY}{a character string of your Metabolights API Token (Default is `NULL`)}
+\item{API_KEY}{a character string of your Metabolights API Token (Default is \code{NULL})}
 }
 \description{
-Set your Metabolights API Token as global option. If `MTBLS_API_KEY` is set in `.Renviron` then this variable will be passed directly
-to the `MTBLS_API_KEY` option. If no `MTBLS_API_KEY` is set in `.Renviron`, then the API Token must be passed as an input in the `set_api_token`
+Set your Metabolights API Token as global option. If \code{MTBLS_API_KEY} is set in \code{.Renviron} then this variable will be passed directly
+to the \code{MTBLS_API_KEY} option. If no \code{MTBLS_API_KEY} is set in \code{.Renviron}, then the API Token must be passed as an input in the \code{set_api_token}
 function
 }
 \examples{

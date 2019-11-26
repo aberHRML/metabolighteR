@@ -10,8 +10,13 @@ get_study_factors(study_id)
 \item{study_id}{A character string of a valid MTBLS study id}
 }
 \value{
-a `tibble` of study factors
+a \code{tibble} of study factors
 }
 \description{
 Get Study Factors
+}
+\examples{
+\dontrun{
+get_study_factors('MTBLS375')
+}
 }

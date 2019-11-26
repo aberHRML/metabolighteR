@@ -10,8 +10,13 @@ get_study_protocols(study_id)
 \item{study_id}{A character string of a valid MTBLS study id}
 }
 \value{
-a `tibble` of study protocols
+a \code{tibble} of study protocols
 }
 \description{
 Get Study Protocols
+}
+\examples{
+\dontrun{
+get_study_protocols('MTBLS375')
+}
 }

@@ -9,8 +9,13 @@ get_isa_investigation(study_id, outpath)
 \arguments{
 \item{study_id}{A character string of a valid MTBLS study id}
 
-\item{outpath}{A character string of a filepath where the ISA Investigation `.txt` file will be saved to}
+\item{outpath}{A character string of a filepath where the ISA Investigation \code{.txt} file will be saved to}
 }
 \description{
 Get ISA Investigation File
+}
+\examples{
+\dontrun{
+get_isa_investigation('MTBLS375', 'local_directory/')
+}
 }

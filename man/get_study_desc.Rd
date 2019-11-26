@@ -15,3 +15,8 @@ a character string of the study description
 \description{
 Get Study Description
 }
+\examples{
+\dontrun{
+get_study_desc('MTBLS375')
+}
+}

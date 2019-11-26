@@ -10,8 +10,13 @@ get_study_descriptors(study_id)
 \item{study_id}{A character string of a valid MTBLS study id}
 }
 \value{
-a `tibble` of study descriptors
+a \code{tibble} of study descriptors
 }
 \description{
 Get Study Descriptors
+}
+\examples{
+\dontrun{
+get_study_descriptors('MTBLS375')
+}
 }

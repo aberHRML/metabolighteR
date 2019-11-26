@@ -7,8 +7,11 @@
 get_studies()
 }
 \value{
-a `tibble` of Study IDs
+a \code{tibble} of Study IDs
 }
 \description{
 Retrieve a list of all available MTBLS Study ID's
+}
+\examples{
+get_studies()
 }

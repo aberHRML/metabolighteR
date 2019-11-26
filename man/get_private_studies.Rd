@@ -7,8 +7,13 @@
 get_private_studies()
 }
 \value{
-a `tibble` of your private Study IDs
+a \code{tibble} of your private Study IDs
 }
 \description{
 Get Private Studies
+}
+\examples{
+\dontrun{
+get_private_studies()
+}
 }

@@ -7,7 +7,7 @@
 protocols_annotation(x)
 }
 \arguments{
-\item{x}{the `httr` parsed output from `get_study_protocols`}
+\item{x}{the \code{httr} parsed output from \code{get_study_protocols}}
 }
 \value{
 a character string of protocol annotations

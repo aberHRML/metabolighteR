@@ -9,11 +9,16 @@ get_study_files(study_id, raw_data = FALSE)
 \arguments{
 \item{study_id}{A character string of a valid MTBLS study id}
 
-\item{raw_data}{logical; if `TRUE` then raw data file info is also returned. (Default is `FALSE`)}
+\item{raw_data}{logical; if \code{TRUE} then raw data file info is also returned. (Default is \code{FALSE})}
 }
 \value{
-a `tibble` of file info
+a \code{tibble} of file info
 }
 \description{
 Get Study Files
+}
+\examples{
+\dontrun{
+get_study_files('MTBLS375', raw_data = FALSE)
+}
 }

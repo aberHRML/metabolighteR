@@ -12,3 +12,6 @@ a list of the MTBLS webservice information
 \description{
 Get Web-service details
 }
+\examples{
+get_webservice()
+}

@@ -15,3 +15,8 @@ a character string of the study title
 \description{
 Get Study Title
 }
+\examples{
+\dontrun{
+get_study_title('MTBLS375')
+}
+}

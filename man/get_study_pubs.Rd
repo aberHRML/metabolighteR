@@ -10,8 +10,13 @@ get_study_pubs(study_id)
 \item{study_id}{A character string of a valid MTBLS study id}
 }
 \value{
-a `tibble` of study publicatons
+a \code{tibble} of study publicatons
 }
 \description{
 Get Study Publications
+}
+\examples{
+\dontrun{
+get_study_pubs('MTBLS375')
+}
 }
