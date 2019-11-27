@@ -4,7 +4,7 @@
 \alias{get_isa_investigation}
 \title{Get ISA Investigation File}
 \usage{
-get_isa_investigation(study_id, outpath)
+get_isa_investigation(study_id)
 }
 \arguments{
 \item{study_id}{A character string of a valid MTBLS study id}
