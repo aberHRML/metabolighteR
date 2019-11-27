@@ -1,11 +1,12 @@
 #' Get ISA Investigation File
 #'
 #' @param study_id A character string of a valid MTBLS study id
-#' @param outpath A character string of a filepath where the ISA Investigation `.txt` file will be saved to
+#' @return the ISA-tab Investigation output
 #' @export
 #' @examples
 #' \dontrun{
-#' get_isa_investigation('MTBLS375', 'local_directory/')
+#' ISA <- get_isa_investigation('MTBLS375')
+#' writeLines(isa_investigation_parse, con = paste0('outpath/ISA.txt'))
 #' }
 
 get_isa_investigation <- function(study_id, outpath)
@@ -23,10 +24,7 @@ get_isa_investigation <- function(study_id, outpath)
 
 
   isa_investigation_parse <-
-    isa_investigation %>% httr::content('text')
+    isa_investigation %>% httr::content('parsed')
 
-  writeLines(isa_investigation_parse,
-             con = paste0(outpath, '/', study_id, '_ISA.txt'))
-
-  return(invisible(NULL))
+  return(isa_investigation_parse)
 }
