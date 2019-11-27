@@ -8,14 +8,16 @@ get_isa_investigation(study_id, outpath)
 }
 \arguments{
 \item{study_id}{A character string of a valid MTBLS study id}
-
-\item{outpath}{A character string of a filepath where the ISA Investigation \code{.txt} file will be saved to}
+}
+\value{
+the ISA-tab Investigation output
 }
 \description{
 Get ISA Investigation File
 }
 \examples{
 \dontrun{
-get_isa_investigation('MTBLS375', 'local_directory/')
+ISA <- get_isa_investigation('MTBLS375')
+writeLines(isa_investigation_parse, con = paste0('outpath/ISA.txt'))
 }
 }
