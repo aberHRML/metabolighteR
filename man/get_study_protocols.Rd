@@ -13,7 +13,7 @@ get_study_protocols(study_id)
 a \code{tibble} of study protocols
 }
 \description{
-Get Study Protocols
+Retrieve the protocol information that has been deposited for a public study
 }
 \examples{
 \dontrun{

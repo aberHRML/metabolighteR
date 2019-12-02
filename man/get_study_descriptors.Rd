@@ -13,7 +13,7 @@ get_study_descriptors(study_id)
 a \code{tibble} of study descriptors
 }
 \description{
-Get Study Descriptors
+Retrieve the study descriptors and annotation values for a publically available study
 }
 \examples{
 \dontrun{

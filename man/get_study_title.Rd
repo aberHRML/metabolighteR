@@ -13,7 +13,7 @@ get_study_title(study_id)
 a character string of the study title
 }
 \description{
-Get Study Title
+Retrieve the full title of the study
 }
 \examples{
 \dontrun{

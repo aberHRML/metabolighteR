@@ -10,7 +10,7 @@ get_private_studies()
 a \code{tibble} of your private Study IDs
 }
 \description{
-Get Private Studies
+Retrieve all private studies which belong to your user account
 }
 \examples{
 \dontrun{

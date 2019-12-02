@@ -10,7 +10,7 @@ get_studies()
 a \code{tibble} of Study IDs
 }
 \description{
-Retrieve a list of all available MTBLS Study ID's
+Retrieve a list of all publically available Metabolights studies
 }
 \examples{
 get_studies()

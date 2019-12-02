@@ -10,7 +10,7 @@ get_webservice()
 a list of the MTBLS webservice information
 }
 \description{
-Get Web-service details
+Retrieve details about the Metabolights RESTful WebService
 }
 \examples{
 get_webservice()

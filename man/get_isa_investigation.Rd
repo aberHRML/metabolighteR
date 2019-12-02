@@ -13,7 +13,7 @@ get_isa_investigation(study_id)
 the ISA-tab Investigation output
 }
 \description{
-Get ISA Investigation File
+Retrieve the ISA Investigation for a specified Metabolights Study
 }
 \examples{
 \dontrun{

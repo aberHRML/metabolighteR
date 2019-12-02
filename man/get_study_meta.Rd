@@ -13,7 +13,7 @@ get_study_meta(study_id)
 a \code{tibble} of study meta data
 }
 \description{
-Get Study Meta
+Retrieve the meta data for a  publically available study
 }
 \examples{
 \dontrun{

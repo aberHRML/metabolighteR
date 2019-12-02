@@ -13,7 +13,7 @@ get_study_factors(study_id)
 a \code{tibble} of study factors
 }
 \description{
-Get Study Factors
+Retrieve the study factors and annotation values for a publically available study
 }
 \examples{
 \dontrun{

@@ -13,7 +13,7 @@ get_study_pubs(study_id)
 a \code{tibble} of study publicatons
 }
 \description{
-Get Study Publications
+Retrieve details on any publications that have been associated with the study
 }
 \examples{
 \dontrun{

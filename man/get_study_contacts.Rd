@@ -13,7 +13,8 @@ get_study_contacts(study_id)
 a \code{tibble} of study contacts
 }
 \description{
-Get Study Contacts
+Retrieve the contact details for a specified public study
+'
 }
 \examples{
 \dontrun{
