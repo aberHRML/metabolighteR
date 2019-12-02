@@ -2,7 +2,7 @@ Package: metabolighteR
 Type: Package
 Title: Interface to the 'Metabolights' RESTful API
 Version: 0.1.0
-Date: 2019-11-19
+Date: 2019-12-02
 Authors@R: c(
     person("Tom", "Wilson", , "tpw2@aber.ac.uk", c("aut", "cre"),  comment = c(ORCID = "0000-0003-3112-4682")))
 Description: Access to the 'Metabolights' RESTful API <https://www.ebi.ac.uk/metabolights/index>. Retrieve elements of publically available 'Metabolights' studies.  
