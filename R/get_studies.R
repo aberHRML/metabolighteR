@@ -1,6 +1,6 @@
 #' Get Studies
 #'
-#' Retrieve a list of all available MTBLS Study ID's
+#' Retrieve a list of all publically available Metabolights studies
 #'
 #' @return a `tibble` of Study IDs
 #' @export

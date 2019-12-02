@@ -1,5 +1,7 @@
 #' Get Study Description
 #'
+#' Retrieve the abstract based description of a public study
+#'
 #' @param study_id A character string of a valid MTBLS study id
 #' @return a character string of the study description
 #' @export

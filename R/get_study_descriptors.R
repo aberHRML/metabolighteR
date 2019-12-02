@@ -1,5 +1,7 @@
 #' Get Study Descriptors
 #'
+#' Retrieve the study descriptors and annotation values for a publically available study
+#'
 #' @param study_id A character string of a valid MTBLS study id
 #' @return a `tibble` of study descriptors
 #' @export

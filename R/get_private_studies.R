@@ -1,5 +1,7 @@
 #' Get Private Studies
 #'
+#' Retrieve all private studies which belong to your user account
+#'
 #' @return a `tibble` of your private Study IDs
 #' @export
 #' @examples

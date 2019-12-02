@@ -1,5 +1,7 @@
 #' Get Study Title
 #'
+#' Retrieve the full title of the study
+#'
 #' @param study_id A character string of a valid MTBLS study id
 #' @return a character string of the study title
 #' @export

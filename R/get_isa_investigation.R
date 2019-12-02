@@ -1,5 +1,7 @@
 #' Get ISA Investigation File
 #'
+#' Retrieve the ISA Investigation for a specified Metabolights Study
+#'
 #' @param study_id A character string of a valid MTBLS study id
 #' @return the ISA-tab Investigation output
 #' @export

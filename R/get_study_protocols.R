@@ -1,5 +1,7 @@
 #' Get Study Protocols
 #'
+#' Retrieve the protocol information that has been deposited for a public study
+#'
 #' @param study_id A character string of a valid MTBLS study id
 #' @return a `tibble` of study protocols
 #' @export

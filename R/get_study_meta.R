@@ -1,5 +1,7 @@
 #' Get Study Meta
 #'
+#' Retrieve the meta data for a  publically available study
+#'
 #' @param study_id A character string of a valid MTBLS study id
 #' @return a `tibble` of study meta data
 #' @export

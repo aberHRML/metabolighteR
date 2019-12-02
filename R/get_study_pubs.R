@@ -1,5 +1,7 @@
 #' Get Study Publications
 #'
+#' Retrieve details on any publications that have been associated with the study
+#'
 #' @param study_id A character string of a valid MTBLS study id
 #' @return a `tibble` of study publicatons
 #' @export
