@@ -17,7 +17,7 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/wilsontom/metabolighteR
 BugReports: https://github.com/wilsontom/metabolighteR/issues
-RoxygenNote: 7.0.1
+RoxygenNote: 7.0.2
 Suggests: 
     covr,
     testthat,
