@@ -9,7 +9,7 @@
 To install the latest development version directly from GitHub;
 
 ```r
-remotes::install_github('wilsontom/metabolighteR)
+remotes::install_github('wilsontom/metabolighteR')
 ```
 
 **metabolighteR** provides access to the Metabolights RESTful API. To get started you first need to [register](https://www.ebi.ac.uk/metabolights/newAccount) and then obtain an API Token from your **Account Settings** page.
