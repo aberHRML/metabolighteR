@@ -11,13 +11,14 @@ Depends:
 Imports:
     httr,
     dplyr,
-    purrr
+    purrr,
+    crayon
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/wilsontom/metabolighteR
 BugReports: https://github.com/wilsontom/metabolighteR/issues
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests: 
     covr,
     testthat,
