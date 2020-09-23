@@ -13,7 +13,5 @@ a \code{tibble} of study id and technology
 Retrieve a \code{tibble} of all Study IDs and the analytical technology used in the study
 }
 \examples{
-\dontrun{
 get_study_tech()
-}
 }

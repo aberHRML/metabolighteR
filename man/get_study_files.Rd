@@ -18,7 +18,5 @@ a \code{tibble} of file info
 Retrieve the names and type of all files that have been deposited with the public study. If \code{raw_data} is TRUE then details of raw data files(ie, \code{.mzML}) are also returned.
 }
 \examples{
-\dontrun{
 get_study_files('MTBLS375', raw_data = FALSE)
-}
 }
