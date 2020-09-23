@@ -6,9 +6,8 @@
 #' @return a `tibble` of study descriptors
 #' @export
 #' @examples
-#' \dontrun{
 #' get_study_descriptors('MTBLS375')
-#' }
+
 
 get_study_descriptors <- function(study_id)
 {
@@ -17,8 +16,7 @@ get_study_descriptors <- function(study_id)
       paste0(getOption('BASE_URL'),
              '/studies/',
              study_id,
-             '/descriptors'),
-      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
+             '/descriptors')
     )
 
 

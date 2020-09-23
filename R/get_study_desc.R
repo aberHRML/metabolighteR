@@ -6,9 +6,7 @@
 #' @return a character string of the study description
 #' @export
 #' @examples
-#' \dontrun{
 #' get_study_desc('MTBLS375')
-#' }
 
 get_study_desc <- function(study_id)
 {
@@ -17,8 +15,7 @@ get_study_desc <- function(study_id)
       paste0(getOption('BASE_URL'),
              '/studies/',
              study_id,
-             '/description'),
-      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
+             '/description')
     )
 
 
