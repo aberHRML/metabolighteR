@@ -22,5 +22,8 @@ RoxygenNote: 7.1.0
 Suggests: 
     covr,
     testthat,
-    tibble
+    tibble,
+    knitr,
+    rmarkdown
 Roxygen: list(markdown = TRUE)
+VignetteBuilder: knitr
