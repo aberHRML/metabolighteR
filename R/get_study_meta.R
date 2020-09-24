@@ -6,9 +6,7 @@
 #' @return a `tibble` of study meta data
 #' @export
 #' @examples
-#' \dontrun{
 #' get_study_meta('MTBLS375')
-#' }
 
 get_study_meta <- function(study_id)
 {
@@ -17,8 +15,7 @@ get_study_meta <- function(study_id)
       paste0(getOption('BASE_URL'),
              '/studies/',
              study_id,
-             '/meta-info'),
-      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
+             '/meta-info')
     )
 
 

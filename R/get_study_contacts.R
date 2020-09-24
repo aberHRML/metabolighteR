@@ -6,9 +6,8 @@
 #' @return a `tibble` of study contacts
 #' @export
 #' @examples
-#' \dontrun{
 #' get_study_contacts('MTBLS375')
-#' }
+#'
 
 get_study_contacts <- function(study_id)
 {
@@ -17,8 +16,7 @@ get_study_contacts <- function(study_id)
       paste0(getOption('BASE_URL'),
              '/studies/',
              study_id,
-             '/contacts'),
-      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
+             '/contacts')
     )
 
 

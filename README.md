@@ -6,7 +6,13 @@
 
 > __R Interface to the [Metabolights REST API](https://www.ebi.ac.uk/metabolights/ws/api/spec.html)__
 
-To install the latest development version directly from GitHub;
+`metabolighteR` can be installed from CRAN using;
+
+```r
+install.packages('metabolighteR')
+```
+
+Or the latest development version can be installed directly from GitHub using the `remotes` package
 
 ```r
 remotes::install_github('wilsontom/metabolighteR')

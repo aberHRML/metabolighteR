@@ -6,9 +6,7 @@
 #' @return a `tibble` of study protocols
 #' @export
 #' @examples
-#' \dontrun{
 #' get_study_protocols('MTBLS375')
-#' }
 
 get_study_protocols <- function(study_id)
 {
@@ -17,8 +15,7 @@ get_study_protocols <- function(study_id)
       paste0(getOption('BASE_URL'),
              '/studies/',
              study_id,
-             '/protocols'),
-      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
+             '/protocols')
     )
 
 

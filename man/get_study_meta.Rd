@@ -16,7 +16,5 @@ a \code{tibble} of study meta data
 Retrieve the meta data for a  publically available study
 }
 \examples{
-\dontrun{
 get_study_meta('MTBLS375')
-}
 }

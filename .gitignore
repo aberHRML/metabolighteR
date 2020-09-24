@@ -3,3 +3,4 @@
 .RData
 .Ruserdata
 cran_submission
+inst/doc

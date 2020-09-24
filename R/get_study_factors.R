@@ -6,9 +6,7 @@
 #' @return a `tibble` of study factors
 #' @export
 #' @examples
-#' \dontrun{
 #' get_study_factors('MTBLS375')
-#' }
 
 get_study_factors <- function(study_id)
 {
@@ -17,10 +15,8 @@ get_study_factors <- function(study_id)
       paste0(getOption('BASE_URL'),
              '/studies/',
              study_id,
-             '/factors'),
-      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
+             '/factors')
     )
-
 
   study_fcts_parse <- study_fcts %>% httr::content('parsed')
 

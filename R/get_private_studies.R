@@ -19,9 +19,12 @@ get_private_studies <- function()
     ) %>% httr::content('parsed')
 
 
-  study_tibble <- dplyr::tibble(unlist(study_priv))
-  names(study_tibble) <- 'study'
-
-  return(study_tibble)
-
+  if (length(study_priv$data) > 0) {
+    study_tibble <- dplyr::tibble(unlist(study_priv))
+    names(study_tibble) <- 'study'
+    return(study_tibble)
+  } else{
+    message(crayon::yellow('No private studies found'))
+    return(invisible(NULL))
+  }
 }

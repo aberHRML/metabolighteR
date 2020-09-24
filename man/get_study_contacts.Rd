@@ -17,7 +17,6 @@ Retrieve the contact details for a specified public study
 '
 }
 \examples{
-\dontrun{
 get_study_contacts('MTBLS375')
-}
+
 }

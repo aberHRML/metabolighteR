@@ -8,9 +8,7 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' \dontrun{
 #' get_study_files('MTBLS375', raw_data = FALSE)
-#' }
 
 get_study_files <- function(study_id, raw_data = FALSE)
 {
@@ -22,8 +20,7 @@ get_study_files <- function(study_id, raw_data = FALSE)
           '/studies/',
           study_id,
           '/files?include_raw_data=false'
-        ),
-        httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
+        )
       )
   }
 
