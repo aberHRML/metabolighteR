@@ -6,6 +6,11 @@
 \usage{
 download_study_file(study_id, filename)
 }
+\arguments{
+\item{study_id}{a character string of a valid MTBLS study id}
+
+\item{filename}{a character of the full filename and extension to download}
+}
 \value{
 a \code{tibble} of file contents
 }
