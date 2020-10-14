@@ -98,7 +98,7 @@ fileContents_A <- download_study_file(studies[1], studyFileList$file[1])
 
 head(fileContents_A)
 
-fileContents_B <- download_study_file(studies[1], studyFileList$file[5])
+fileContents_B <- download_study_file(studies[1], studyFileList$file[3])
 
 head(fileContents_B)
 
