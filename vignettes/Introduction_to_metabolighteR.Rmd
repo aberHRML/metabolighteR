@@ -2,7 +2,7 @@
 title: "Introduction to metabolighteR"
 author:
 - name: Thomas Wilson
-  affiliation: Institute of Biological, Environmental & Rural Sciences (IBERS), Aberystwyth University, UK
+- affiliation: Institute of Biological, Environmental & Rural Sciences (IBERS), Aberystwyth University, UK
   email: tpw2@aber.ac.uk
 output: rmarkdown::html_vignette
 vignette: >
@@ -94,11 +94,11 @@ The contents of these files can then be downloaded using the `download_file` fun
 
 ```{r, download_file, echo=TRUE, eval=TRUE}
 
-fileContents_A <- download_study_file(studies[1], studyFileList$file[1])
+fileContents_A <- download_study_file('MTBLS264', studyFileList$file[1])
 
 head(fileContents_A)
 
-fileContents_B <- download_study_file(studies[1], studyFileList$file[3])
+fileContents_B <- download_study_file('MTBLS264', studyFileList$file[4])
 
 head(fileContents_B)
 
