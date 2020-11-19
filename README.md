@@ -6,6 +6,11 @@
 
 > __R Interface to the [Metabolights REST API](https://www.ebi.ac.uk/metabolights/ws/api/spec.html)__
 
+* [Installation](#installation)
+* [Creating an API Key](#api-key)
+
+## Installation
+
 `metabolighteR` can be installed from CRAN using;
 
 ```r
@@ -18,11 +23,18 @@ Or the latest development version can be installed directly from GitHub using th
 remotes::install_github('wilsontom/metabolighteR')
 ```
 
-**metabolighteR** provides access to the Metabolights RESTful API. To get started you first need to [register](https://www.ebi.ac.uk/metabolights/newAccount) and then obtain an API Token from your **Account Settings** page.
+**metabolighteR** provides access to the Metabolights RESTful API. 
 
-This API Token is required for the vest majority of the API calls, therefore it is a good idea to add the API token to your .Renviron (**NOTE**: *this is NOT recommended if you are using a shared workstation or a workstation where you cannot guarantee the secrecy of your API Token*). 
+
+## Creating an API Key
+
+Some of the API methods (ie, accessing your private studies) require a personal API token. To generate a token you first need to [register](https://www.ebi.ac.uk/metabolights/newAccount) and then obtain an API Token from your **Account Settings** page.
+
+This API Token is **not** required for the vast majority of the API calls for querying publicly available studies. 
 
 If you are adding the API Token to your .Renviron, you should use the following format;
+
+**NOTE**: *this is NOT recommended if you are using a shared workstation or a workstation where you cannot guarantee the secrecy of your API Token*
 
 ```r
 MTBLS_API_KEY="<your-api-token-here>"
@@ -36,11 +48,5 @@ library(metabolighteR)
 mtbls_key()
 ```
 
-If you haven't added your API Token to the .Renviron; the the API Token can be set as an option by passing the API Token as an argumnet in the `set_api_token` function.
 
-```r
-library(metabolighteR)
-
-mtbls_key("<your-api-token_here>")
-```
 
