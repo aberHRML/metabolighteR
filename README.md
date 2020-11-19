@@ -23,9 +23,6 @@ Or the latest development version can be installed directly from GitHub using th
 remotes::install_github('wilsontom/metabolighteR')
 ```
 
-**metabolighteR** provides access to the Metabolights RESTful API. 
-
-
 ## Creating an API Key
 
 Some of the API methods (ie, accessing your private studies) require a personal API token. To generate a token you first need to [register](https://www.ebi.ac.uk/metabolights/newAccount) and then obtain an API Token from your **Account Settings** page.
