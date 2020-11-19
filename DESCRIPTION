@@ -15,8 +15,8 @@ Imports:
     crayon
 License: GPL (>= 3)
 LazyData: true
-URL: https://github.com/wilsontom/metabolighteR
-BugReports: https://github.com/wilsontom/metabolighteR/issues
+URL: https://github.com/aberHRML/metabolighteR
+BugReports: https://github.com/aberHRML/metabolighteR/issues
 RoxygenNote: 7.1.0
 Encoding: UTF-8
 Suggests: 
