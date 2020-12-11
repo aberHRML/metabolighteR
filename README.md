@@ -20,7 +20,7 @@ install.packages('metabolighteR')
 Or the latest development version can be installed directly from GitHub using the `remotes` package
 
 ```r
-remotes::install_github('wilsontom/metabolighteR')
+remotes::install_github('aberHRML/metabolighteR')
 ```
 
 ## Creating an API Key
