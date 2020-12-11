@@ -1,9 +1,9 @@
 ---
 title: "Introduction to metabolighteR"
 author:
-- name: Thomas Wilson
-- affiliation: Institute of Biological, Environmental & Rural Sciences (IBERS), Aberystwyth University, UK
-  email: tpw2@aber.ac.uk
+  - name: Thomas Wilson
+    affiliation: Institute of Biological, Environmental & Rural Sciences (IBERS), Aberystwyth University, UK
+    email: tpw2@aber.ac.uk
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction_to_metabolighteR}
@@ -11,26 +11,27 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r, include = FALSE, echo=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
-```{r, load}
+```{r, load, eval=TRUE, echo=FALSE}
 suppressPackageStartupMessages(library(metabolighteR))
 ```
 
 
 ## Introduction
 
-[MetaboLights](https://www.ebi.ac.uk/metabolights/) is a database for metabolomics experiments and associated information. The database allows users to deposit; raw data, sample information, analysis protocols and metabolite annotation data.
+[MetaboLights](https://www.ebi.ac.uk/metabolights/) is a database for metabolomics experiments and associated information. The database allows users to deposit raw data, sample information, analysis protocols and metabolite annotation data.
 
-metabolighteR provided easy access to publicly available MetaboLights studies *via* the MetaboLights RESTful API. Only API methods which retrieve data (`GET`) are supported by metabolighteR. 
+metabolighteR provides easy access to publicly available MetaboLights studies *via* the MetaboLights RESTful API. Only API methods which retrieve data (`GET`) are supported by metabolighteR. 
 
 
 ## Installation
+
 metabolighteR can be installed from CRAN or, for the latest development version, directly from GitHub using the `remotes` package.
 
 ```{r install_cran, echo=TRUE, eval=FALSE}
@@ -45,7 +46,7 @@ library(metabolighteR)
 
 ## Querying the Repository
 
-A list of all public study identification codes can be easily retrieved
+A list of all public study identification codes can be easily retrieved.
 
 ```{r, get_studies, echo=TRUE, eval=TRUE}
 all_study_ids <- get_studies()
@@ -56,7 +57,7 @@ head(studies)
 ```
 
 
-Using a combination of functions, a table fo Study ID, Study Title and Study Technology.
+Generate a summary table containing; Study ID, Study Title and Study Technology, for publicly available studies. 
 
 ```{r, get_study_info, echo=TRUE, eval=TRUE}
 # For the first five studies
@@ -81,7 +82,7 @@ StudyInfoTable
 
 ## Download File Contents
 
-A list of all available files can be generated using the `get_study_files` function
+A list of all available files can be generated using the `get_study_files` function.
 
 ```{r, file_list, echo=TRUE, eval=TRUE}
 
@@ -90,7 +91,7 @@ studyFileList <- get_study_files(studies[1])
 studyFileList
 ```
 
-The contents of these files can then be downloaded using the `download_file` function
+The contents of these files can then be downloaded using the `download_file` function.
 
 ```{r, download_file, echo=TRUE, eval=TRUE}
 
