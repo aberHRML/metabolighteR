@@ -64,7 +64,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/wilsontom/metabolighteR/">
+  <a href="https://github.com/aberHRML/metabolighteR/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -84,40 +84,40 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to metabolighteR</h1>
                         <h4 class="author">Thomas Wilson</h4>
-                                    <h4 class="author">true</h4>
-            
+            <address class="author_afil">
+      Institute of Biological, Environmental &amp; Rural Sciences (IBERS), Aberystwyth University, UK<br><a class="author_email" href="mailto:#"></a><a href="mailto:tpw2@aber.ac.uk" class="email">tpw2@aber.ac.uk</a>
+      </address>
+                  
       
-      <small class="dont-index">Source: <a href="https://github.com/wilsontom/metabolighteR/blob/master/vignettes/Introduction_to_metabolighteR.Rmd"><code>vignettes/Introduction_to_metabolighteR.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/aberHRML/metabolighteR/blob/master/vignettes/Introduction_to_metabolighteR.Rmd"><code>vignettes/Introduction_to_metabolighteR.Rmd</code></a></small>
       <div class="hidden name"><code>Introduction_to_metabolighteR.Rmd</code></div>
 
     </div>
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/wilsontom/metabolighteR">metabolighteR</a></span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
-<p><a href="https://www.ebi.ac.uk/metabolights/">MetaboLights</a> is a database for metabolomics experiments and associated information. The database allows users to deposit; raw data, sample information, analysis protocols and metabolite annotation data.</p>
-<p>metabolighteR provided easy access to publicly available MetaboLights studies <em>via</em> the MetaboLights RESTful API. Only API methods which retrieve data (<code>GET</code>) are supported by metabolighteR.</p>
+<p><a href="https://www.ebi.ac.uk/metabolights/">MetaboLights</a> is a database for metabolomics experiments and associated information. The database allows users to deposit raw data, sample information, analysis protocols and metabolite annotation data.</p>
+<p>metabolighteR provides easy access to publicly available MetaboLights studies <em>via</em> the MetaboLights RESTful API. Only API methods which retrieve data (<code>GET</code>) are supported by metabolighteR.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>metabolighteR can be installed from CRAN or, for the latest development version, directly from GitHub using the <code>remotes</code> package.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'metabolighteR'</span><span class="op">)</span>
 
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">'wilsontom/metabolighteR'</span><span class="op">)</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/wilsontom/metabolighteR">metabolighteR</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/aberHRML/metabolighteR">metabolighteR</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="querying-the-repository" class="section level2">
 <h2 class="hasAnchor">
 <a href="#querying-the-repository" class="anchor"></a>Querying the Repository</h2>
-<p>A list of all public study identification codes can be easily retrieved</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p>A list of all public study identification codes can be easily retrieved.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">all_study_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_studies.html">get_studies</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Warning: replacing previous import 'vctrs::data_frame' by 'tibble::data_frame'</span>
 <span class="co">#&gt; when loading 'dplyr'</span>
@@ -125,9 +125,9 @@
 <span class="va">studies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">all_study_ids</span><span class="op">$</span><span class="va">study</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">studies</span><span class="op">)</span>
-<span class="co">#&gt; [1] "MTBLS1390" "MTBLS1320" "MTBLS13"   "MTBLS154"  "MTBLS1569" "MTBLS133"</span></code></pre></div>
-<p>Using a combination of functions, a table fo Study ID, Study Title and Study Technology.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<span class="co">#&gt; [1] "MTBLS164" "MTBLS394" "MTBLS120" "MTBLS398" "MTBLS405" "MTBLS217"</span></code></pre></div>
+<p>Generate a summary table containing; Study ID, Study Title and Study Technology, for publicly available studies.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># For the first five studies</span>
 
 <span class="va">study_titles</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">studies</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">get_study_title</span><span class="op">)</span>
@@ -145,34 +145,32 @@
 
 <span class="va">StudyInfoTable</span>
 <span class="co">#&gt; # A tibble: 5 x 3</span>
-<span class="co">#&gt;   STUDY    Title                                       TECH                     </span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                                       &lt;chr&gt;                    </span>
-<span class="co">#&gt; 1 MTBLS13… Cell-based and multi-omics profiling revea… LC-LTQ-MS                </span>
-<span class="co">#&gt; 2 MTBLS13… A multi-omics dataset of heat-shock respon… NMR                      </span>
-<span class="co">#&gt; 3 MTBLS13  Metabolomic profiles in short day, before … GC-TOF-MS                </span>
-<span class="co">#&gt; 4 MTBLS154 Phosphorus availability regulates intracel… UPLC-FT-ICR-MS;UPLC-LTQ-…</span>
-<span class="co">#&gt; 5 MTBLS15… The killing mechanism of teixobactin again… HPLC-LTQ-MS</span></code></pre></div>
+<span class="co">#&gt;   STUDY   Title                                     TECH                        </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                                     &lt;chr&gt;                       </span>
+<span class="co">#&gt; 1 MTBLS1… Searching for metabolic changes in urine… PTR-MS                      </span>
+<span class="co">#&gt; 2 MTBLS3… Lipid Data Analyzer: Decision rule set d… HPLC-QTOF-MS;UPLC-QTOF-MS/M…</span>
+<span class="co">#&gt; 3 MTBLS1… Metabolomic Discrimination of Near Isoge… UPLC-QTOF-MS/MS             </span>
+<span class="co">#&gt; 4 MTBLS3… Lipid Data Analyzer: Discrimination of s… HPLC-LTQ-MS;UPLC-LTQ-MS;UPL…</span>
+<span class="co">#&gt; 5 MTBLS4… Proteomic and metabolic changes in cance… HPLC-TQ-MS/MS</span></code></pre></div>
 </div>
 <div id="download-file-contents" class="section level2">
 <h2 class="hasAnchor">
 <a href="#download-file-contents" class="anchor"></a>Download File Contents</h2>
-<p>A list of all available files can be generated using the <code>get_study_files</code> function</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<p>A list of all available files can be generated using the <code>get_study_files</code> function.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">studyFileList</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_study_files.html">get_study_files</a></span><span class="op">(</span><span class="va">studies</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
 
 <span class="va">studyFileList</span>
-<span class="co">#&gt; # A tibble: 6 x 6</span>
+<span class="co">#&gt; # A tibble: 4 x 6</span>
 <span class="co">#&gt;   createdAt      directory file                     status timestamp  type      </span>
 <span class="co">#&gt;   &lt;chr&gt;          &lt;lgl&gt;     &lt;chr&gt;                    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;     </span>
-<span class="co">#&gt; 1 May 15 2020 1… FALSE     a_MTBLS1390_metabolite_… active 202005151… metadata_…</span>
-<span class="co">#&gt; 2 May 15 2020 1… FALSE     a_MTBLS1390_metabolite_… active 202005151… metadata_…</span>
-<span class="co">#&gt; 3 August 20 202… FALSE     i_Investigation.txt      active 202008201… metadata_…</span>
-<span class="co">#&gt; 4 May 15 2020 1… FALSE     m_MTBLS1390_metabolite_… active 202005151… metadata_…</span>
-<span class="co">#&gt; 5 May 15 2020 1… FALSE     m_MTBLS1390_metabolite_… active 202005151… metadata_…</span>
-<span class="co">#&gt; 6 May 15 2020 1… FALSE     s_MTBLS1390.txt          active 202005151… metadata_…</span></code></pre></div>
-<p>The contents of these files can then be downloaded using the <code>download_file</code> function</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<span class="co">#&gt; 1 March 10 2017… FALSE     a_vierdagse_urine_metab… active 201703101… metadata_…</span>
+<span class="co">#&gt; 2 December 04 2… FALSE     i_Investigation.txt      active 201912041… metadata_…</span>
+<span class="co">#&gt; 3 March 10 2017… FALSE     m_vierdagse_urine_metab… active 201703101… metadata_…</span>
+<span class="co">#&gt; 4 March 10 2017… FALSE     s_VIERDAGURI.txt         active 201703101… metadata_…</span></code></pre></div>
+<p>The contents of these files can then be downloaded using the <code>download_file</code> function.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">fileContents_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/download_study_file.html">download_study_file</a></span><span class="op">(</span><span class="st">'MTBLS264'</span>, <span class="va">studyFileList</span><span class="op">$</span><span class="va">file</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
@@ -180,15 +178,14 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">fileContents_A</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 0 x 1</span>
 <span class="co">#&gt; # … with 1 variable:</span>
-<span class="co">#&gt; #   X.message..Could.not.find.file.a_MTBLS1390_metabolite_profiling_mass_spectrometry.1.txt. &lt;lgl&gt;</span>
+<span class="co">#&gt; #   X.message..Could.not.find.file.a_vierdagse_urine_metabolite_profiling_mass_spectrometry.txt. &lt;lgl&gt;</span>
 
 <span class="va">fileContents_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/download_study_file.html">download_study_file</a></span><span class="op">(</span><span class="st">'MTBLS264'</span>, <span class="va">studyFileList</span><span class="op">$</span><span class="va">file</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">fileContents_B</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 0 x 1</span>
-<span class="co">#&gt; # … with 1 variable:</span>
-<span class="co">#&gt; #   X.message..Could.not.find.file.m_MTBLS1390_metabolite_profiling_mass_spectrometry.1_v2_maf.tsv. &lt;lgl&gt;</span></code></pre></div>
+<span class="co">#&gt; # … with 1 variable: X.message..Could.not.find.file.s_VIERDAGURI.txt. &lt;lgl&gt;</span></code></pre></div>
 </div>
   </div>
 
