@@ -119,13 +119,11 @@
 <p>A list of all public study identification codes can be easily retrieved.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">all_study_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_studies.html">get_studies</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Warning: replacing previous import 'vctrs::data_frame' by 'tibble::data_frame'</span>
-<span class="co">#&gt; when loading 'dplyr'</span>
 
 <span class="va">studies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">all_study_ids</span><span class="op">$</span><span class="va">study</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">studies</span><span class="op">)</span>
-<span class="co">#&gt; [1] "MTBLS164" "MTBLS394" "MTBLS120" "MTBLS398" "MTBLS405" "MTBLS217"</span></code></pre></div>
+<span class="co">#&gt; [1] "MTBLS1987" "MTBLS1386" "MTBLS363"  "MTBLS235"  "MTBLS441"  "MTBLS321"</span></code></pre></div>
 <p>Generate a summary table containing; Study ID, Study Title and Study Technology, for publicly available studies.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># For the first five studies</span>
@@ -145,13 +143,13 @@
 
 <span class="va">StudyInfoTable</span>
 <span class="co">#&gt; # A tibble: 5 x 3</span>
-<span class="co">#&gt;   STUDY   Title                                     TECH                        </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                                     &lt;chr&gt;                       </span>
-<span class="co">#&gt; 1 MTBLS1… Searching for metabolic changes in urine… PTR-MS                      </span>
-<span class="co">#&gt; 2 MTBLS3… Lipid Data Analyzer: Decision rule set d… HPLC-QTOF-MS;UPLC-QTOF-MS/M…</span>
-<span class="co">#&gt; 3 MTBLS1… Metabolomic Discrimination of Near Isoge… UPLC-QTOF-MS/MS             </span>
-<span class="co">#&gt; 4 MTBLS3… Lipid Data Analyzer: Discrimination of s… HPLC-LTQ-MS;UPLC-LTQ-MS;UPL…</span>
-<span class="co">#&gt; 5 MTBLS4… Proteomic and metabolic changes in cance… HPLC-TQ-MS/MS</span></code></pre></div>
+<span class="co">#&gt;   STUDY    Title                                                    TECH        </span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                                                    &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 MTBLS19… Kynurenic acid underlies sex-specific immune responses … UPLC-QTOF-MS</span>
+<span class="co">#&gt; 2 MTBLS13… Hepatic PPARα function and lipid metabolic pathways are… UPLC-LTQ-MS </span>
+<span class="co">#&gt; 3 MTBLS363 Transcript, protein and metabolite temporal dynamics in… GC-Q-MS     </span>
+<span class="co">#&gt; 4 MTBLS235 Automated Label-free Quantification of Metabolites from… LC-MS simul…</span>
+<span class="co">#&gt; 5 MTBLS441 Stress-related mitogen-activated protein kinases stimul… UPLC-QTOF-MS</span></code></pre></div>
 </div>
 <div id="download-file-contents" class="section level2">
 <h2 class="hasAnchor">
@@ -162,13 +160,19 @@
 <span class="va">studyFileList</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_study_files.html">get_study_files</a></span><span class="op">(</span><span class="va">studies</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
 
 <span class="va">studyFileList</span>
-<span class="co">#&gt; # A tibble: 4 x 6</span>
-<span class="co">#&gt;   createdAt      directory file                     status timestamp  type      </span>
-<span class="co">#&gt;   &lt;chr&gt;          &lt;lgl&gt;     &lt;chr&gt;                    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;     </span>
-<span class="co">#&gt; 1 March 10 2017… FALSE     a_vierdagse_urine_metab… active 201703101… metadata_…</span>
-<span class="co">#&gt; 2 December 04 2… FALSE     i_Investigation.txt      active 201912041… metadata_…</span>
-<span class="co">#&gt; 3 March 10 2017… FALSE     m_vierdagse_urine_metab… active 201703101… metadata_…</span>
-<span class="co">#&gt; 4 March 10 2017… FALSE     s_VIERDAGURI.txt         active 201703101… metadata_…</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 10 x 6</span>
+<span class="co">#&gt;    createdAt      directory file                     status timestamp  type     </span>
+<span class="co">#&gt;    &lt;chr&gt;          &lt;lgl&gt;     &lt;chr&gt;                    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;    </span>
+<span class="co">#&gt;  1 September 08 … FALSE     a_MTBLS1987_LC-MS_negat… active 202009080… metadata…</span>
+<span class="co">#&gt;  2 September 08 … FALSE     a_MTBLS1987_LC-MS_negat… active 202009080… metadata…</span>
+<span class="co">#&gt;  3 September 08 … FALSE     a_MTBLS1987_LC-MS_posit… active 202009080… metadata…</span>
+<span class="co">#&gt;  4 September 08 … FALSE     a_MTBLS1987_LC-MS_posit… active 202009080… metadata…</span>
+<span class="co">#&gt;  5 September 08 … FALSE     i_Investigation.txt      active 202009081… metadata…</span>
+<span class="co">#&gt;  6 December 06 2… FALSE     m_MTBLS1987_LC-MS_negat… active 202012061… metadata…</span>
+<span class="co">#&gt;  7 September 08 … FALSE     m_MTBLS1987_LC-MS_negat… active 202009080… metadata…</span>
+<span class="co">#&gt;  8 September 08 … FALSE     m_MTBLS1987_LC-MS_posit… active 202009080… metadata…</span>
+<span class="co">#&gt;  9 September 08 … FALSE     m_MTBLS1987_LC-MS_posit… active 202009080… metadata…</span>
+<span class="co">#&gt; 10 December 06 2… FALSE     s_MTBLS1987.txt          active 202012061… metadata…</span></code></pre></div>
 <p>The contents of these files can then be downloaded using the <code>download_file</code> function.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -178,14 +182,15 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">fileContents_A</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 0 x 1</span>
 <span class="co">#&gt; # … with 1 variable:</span>
-<span class="co">#&gt; #   X.message..Could.not.find.file.a_vierdagse_urine_metabolite_profiling_mass_spectrometry.txt. &lt;lgl&gt;</span>
+<span class="co">#&gt; #   X.message..Could.not.find.file.a_MTBLS1987_LC.MS_negative_hilic_metabolite_profiling.txt. &lt;lgl&gt;</span>
 
 <span class="va">fileContents_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/download_study_file.html">download_study_file</a></span><span class="op">(</span><span class="st">'MTBLS264'</span>, <span class="va">studyFileList</span><span class="op">$</span><span class="va">file</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">fileContents_B</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 0 x 1</span>
-<span class="co">#&gt; # … with 1 variable: X.message..Could.not.find.file.s_VIERDAGURI.txt. &lt;lgl&gt;</span></code></pre></div>
+<span class="co">#&gt; # … with 1 variable:</span>
+<span class="co">#&gt; #   X.message..Could.not.find.file.a_MTBLS1987_LC.MS_positive_reverse.phase_metabolite_profiling.txt. &lt;lgl&gt;</span></code></pre></div>
 </div>
   </div>
 
