@@ -2,7 +2,7 @@
 
  [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) [![R build status](https://github.com/aberHRML/metabolighteR/workflows/R-CMD-check/badge.svg)](https://github.com/aberHRML/metabolighteR/actions) [![codecov](https://codecov.io/gh/aberHRML/metabolighteR/branch/master/graph/badge.svg)](https://codecov.io/gh/aberHRML/metabolighteR) ![License](https://img.shields.io/badge/license-GNU%20GPL%20v3.0-blue.svg "GNU GPL v3.0") [![DOI](https://zenodo.org/badge/174119954.svg)](https://zenodo.org/badge/latestdoi/174119954)
 
-[![CRAN](https://www.r-pkg.org/badges/version/metabolighteR)](https://cran.r-project.org/web/packages/metabolighteR/index.html) ![total downloads](https://cranlogs.r-pkg.org/badges/grand-total/metabolighteR?color=red) [![GitHub](https://img.shields.io/github/v/release/aberHRML/metabolighteR?color=brightgreen&label=GitHub%20Version)](https://github.com/aberHRML/metabolighteR/releases)
+[![CRAN](https://www.r-pkg.org/badges/version/metabolighteR)](https://cran.r-project.org/web/packages/metabolighteR/index.html) ![total downloads](https://cranlogs.r-pkg.org/badges/grand-total/metabolighteR?color=red)  [![GitHub](https://img.shields.io/github/v/release/aberHRML/metabolighteR?color=brightgreen&label=GitHub%20Version)](https://github.com/aberHRML/metabolighteR/releases)
 
 > __R Interface to the [Metabolights REST API](https://www.ebi.ac.uk/metabolights/ws/api/spec.html)__
 
