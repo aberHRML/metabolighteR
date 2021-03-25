@@ -1,3 +1,6 @@
+# metabolighteR v0.1.2
+* Fix R CMD check CRAN warnings in vignette
+
 # metabolighteR v0.1.1
 
 * Remove dependency of Personal API token for API methods where it can be omitted
