@@ -86,7 +86,7 @@ A list of all available files can be generated using the `get_study_files` funct
 
 ```{r, file_list, echo=TRUE, eval=TRUE}
 
-studyFileList <- get_study_files(studies[1])
+studyFileList <- get_study_files('MTBLS264')
 
 studyFileList
 ```
