@@ -1,6 +1,6 @@
 Package: metabolighteR
 Type: Package
-Title: Interface to the 'Metabolights' RESTful API
+Title: Interface to the 'Metabolights' REST API
 Version: 0.1.2
 Date: 2021-03-29
 Authors@R: c(
