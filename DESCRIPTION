@@ -1,8 +1,8 @@
 Package: metabolighteR
 Type: Package
 Title: Interface to the 'Metabolights' RESTful API
-Version: 0.1.2
-Date: 2021-03-25
+Version: 0.1.3
+Date: 2022-02-09
 Authors@R: c(
     person("Tom", "Wilson", , "tpw2@aber.ac.uk", c("aut", "cre"),  comment = c(ORCID = '0000-0003-3112-4682')))
 Description: Access to the 'Metabolights' RESTful API <https://www.ebi.ac.uk/metabolights/index>. Retrieve elements of publically available 'Metabolights' studies.  
@@ -17,7 +17,7 @@ License: GPL (>= 3)
 LazyData: true
 URL: https://github.com/aberHRML/metabolighteR
 BugReports: https://github.com/aberHRML/metabolighteR/issues
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Encoding: UTF-8
 Suggests: 
     covr,
