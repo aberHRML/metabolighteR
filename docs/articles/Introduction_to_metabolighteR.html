@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metabolighteR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -65,7 +65,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/aberHRML/metabolighteR/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -79,7 +79,7 @@
 
       
 
-      </header><script src="Introduction_to_metabolighteR_files/header-attrs-2.4/header-attrs.js"></script><script src="Introduction_to_metabolighteR_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="Introduction_to_metabolighteR_files/header-attrs-2.7/header-attrs.js"></script><script src="Introduction_to_metabolighteR_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to metabolighteR</h1>
@@ -96,6 +96,7 @@
 
     
     
+<pre><code>#&gt; Warning: package 'magrittr' was built under R version 4.0.3</code></pre>
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
@@ -106,7 +107,7 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>metabolighteR can be installed from CRAN or, for the latest development version, directly from GitHub using the <code>remotes</code> package.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'metabolighteR'</span><span class="op">)</span>
 
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">'wilsontom/metabolighteR'</span><span class="op">)</span>
@@ -117,15 +118,15 @@
 <h2 class="hasAnchor">
 <a href="#querying-the-repository" class="anchor"></a>Querying the Repository</h2>
 <p>A list of all public study identification codes can be easily retrieved.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">all_study_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_studies.html">get_studies</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">studies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">all_study_ids</span><span class="op">$</span><span class="va">study</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">studies</span><span class="op">)</span>
-<span class="co">#&gt; [1] "MTBLS215" "MTBLS235" "MTBLS315" "MTBLS321" "MTBLS106" "MTBLS350"</span></code></pre></div>
+<span class="co">#&gt; [1] "MTBLS1044" "MTBLS11"   "MTBLS204"  "MTBLS1073" "MTBLS1040" "MTBLS209"</span></code></pre></div>
 <p>Generate a summary table containing; Study ID, Study Title and Study Technology, for publicly available studies.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># For the first five studies</span>
 
 <span class="va">study_titles</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">studies</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">get_study_title</span><span class="op">)</span>
@@ -143,50 +144,107 @@
 
 <span class="va">StudyInfoTable</span>
 <span class="co">#&gt; # A tibble: 5 x 3</span>
-<span class="co">#&gt;   STUDY   Title                                             TECH                </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                                             &lt;chr&gt;               </span>
-<span class="co">#&gt; 1 MTBLS2… Fragmentation patterns of methyloxime-trimethyls… GC-TOF-MS           </span>
-<span class="co">#&gt; 2 MTBLS2… Automated Label-free Quantification of Metabolit… LC-MS simulation    </span>
-<span class="co">#&gt; 3 MTBLS3… Towards improving point-of-care diagnosis of non… GC-TOF-MS;UPLC-LTQ-…</span>
-<span class="co">#&gt; 4 MTBLS3… eRah: A computational tool integrating spectral … GC-QTOF-MS          </span>
-<span class="co">#&gt; 5 MTBLS1… Ribosomal mistranslation leads to silencing of t… UPLC-MS/MS</span></code></pre></div>
+<span class="co">#&gt;   STUDY    Title                                                     TECH       </span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                                                     &lt;chr&gt;      </span>
+<span class="co">#&gt; 1 MTBLS10… Systematic identification of metabolites controlling gen… UPLC-TQ-MS…</span>
+<span class="co">#&gt; 2 MTBLS11  Metabolomic profiles in long day, before bolting, single… GC-TOF-MS  </span>
+<span class="co">#&gt; 3 MTBLS204 Metabolomics analysis of human acute graft-versus-host d… UPLC-MS/MS </span>
+<span class="co">#&gt; 4 MTBLS10… Human Cytomegalovirus pUL37x1 is Important to Remodeling… UPLC-LTQ-M…</span>
+<span class="co">#&gt; 5 MTBLS10… Creating a Reliable Mass Spectral–Retention Time Library… LC-QTOF-MS…</span></code></pre></div>
 </div>
 <div id="download-file-contents" class="section level2">
 <h2 class="hasAnchor">
 <a href="#download-file-contents" class="anchor"></a>Download File Contents</h2>
 <p>A list of all available files can be generated using the <code>get_study_files</code> function.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">studyFileList</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_study_files.html">get_study_files</a></span><span class="op">(</span><span class="va">studies</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
+<span class="va">studyFileList</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_study_files.html">get_study_files</a></span><span class="op">(</span><span class="st">'MTBLS264'</span><span class="op">)</span>
 
 <span class="va">studyFileList</span>
 <span class="co">#&gt; # A tibble: 6 x 6</span>
-<span class="co">#&gt;   createdAt       directory file                 status timestamp   type        </span>
-<span class="co">#&gt;   &lt;chr&gt;           &lt;lgl&gt;     &lt;chr&gt;                &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;       </span>
-<span class="co">#&gt; 1 March 10 2017 … FALSE     a_18V_EI-MS_spectra… active 2017031017… metadata_as…</span>
-<span class="co">#&gt; 2 March 10 2017 … FALSE     a_FI-MS_spectra_dat… active 2017031017… metadata_as…</span>
-<span class="co">#&gt; 3 March 10 2017 … FALSE     i_Investigation.txt  active 2017031017… metadata_in…</span>
-<span class="co">#&gt; 4 March 10 2017 … FALSE     m_18V_EI-MS_spectra… active 2017031017… metadata_maf</span>
-<span class="co">#&gt; 5 March 10 2017 … FALSE     m_FI-MS_spectra_dat… active 2017031017… metadata_maf</span>
-<span class="co">#&gt; 6 March 26 2020 … FALSE     s_FI-MS and 18V-EI … active 2020032618… metadata_sa…</span></code></pre></div>
+<span class="co">#&gt;   createdAt       directory file                  status timestamp   type       </span>
+<span class="co">#&gt;   &lt;chr&gt;           &lt;lgl&gt;     &lt;chr&gt;                 &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;      </span>
+<span class="co">#&gt; 1 March 20 2017 … FALSE     a_mtbls264_NEG_mass_… active 2017032014… metadata_a…</span>
+<span class="co">#&gt; 2 March 20 2017 … FALSE     a_mtbls264_POS_mass_… active 2017032014… metadata_a…</span>
+<span class="co">#&gt; 3 January 13 202… FALSE     i_Investigation.txt   active 2020011313… metadata_i…</span>
+<span class="co">#&gt; 4 March 20 2017 … FALSE     m_mtbls264_NEG_mass_… active 2017032014… metadata_m…</span>
+<span class="co">#&gt; 5 March 20 2017 … FALSE     m_mtbls264_POS_mass_… active 2017032014… metadata_m…</span>
+<span class="co">#&gt; 6 March 20 2017 … FALSE     s_MTBLS264.txt        active 2017032014… metadata_s…</span></code></pre></div>
 <p>The contents of these files can then be downloaded using the <code>download_file</code> function.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">fileContents_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/download_study_file.html">download_study_file</a></span><span class="op">(</span><span class="st">'MTBLS264'</span>, <span class="va">studyFileList</span><span class="op">$</span><span class="va">file</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">fileContents_A</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 0 x 1</span>
-<span class="co">#&gt; # … with 1 variable:</span>
-<span class="co">#&gt; #   X.message..Could.not.find.file.a_18V_EI.MS_spectra_database.txt. &lt;lgl&gt;</span>
+<span class="co">#&gt; # A tibble: 6 x 35</span>
+<span class="co">#&gt;   Sample.Name   Protocol.REF Parameter.Value.Po… Parameter.Value.D… Extract.Name</span>
+<span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;        &lt;lgl&gt;               &lt;lgl&gt;              &lt;lgl&gt;       </span>
+<span class="co">#&gt; 1 Volunteer1_b… Extraction   NA                  NA                 NA          </span>
+<span class="co">#&gt; 2 Volunteer1_p… Extraction   NA                  NA                 NA          </span>
+<span class="co">#&gt; 3 Volunteer1_R… Extraction   NA                  NA                 NA          </span>
+<span class="co">#&gt; 4 Volunteer2_b… Extraction   NA                  NA                 NA          </span>
+<span class="co">#&gt; 5 Volunteer2_p… Extraction   NA                  NA                 NA          </span>
+<span class="co">#&gt; 6 Volunteer2_R… Extraction   NA                  NA                 NA          </span>
+<span class="co">#&gt; # … with 30 more variables: Protocol.REF.1 &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Parameter.Value.Chromatography.Instrument. &lt;chr&gt;, Term.Source.REF &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   Term.Accession.Number &lt;lgl&gt;, Parameter.Value.Column.model. &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Parameter.Value.Column.type. &lt;chr&gt;, Labeled.Extract.Name &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   Label &lt;lgl&gt;, Term.Source.REF.1 &lt;lgl&gt;, Term.Accession.Number.1 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   Protocol.REF.2 &lt;chr&gt;, Parameter.Value.Scan.polarity. &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Parameter.Value.Scan.m.z.range. &lt;chr&gt;, Parameter.Value.Instrument. &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Term.Source.REF.2 &lt;lgl&gt;, Term.Accession.Number.2 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   Parameter.Value.Ion.source. &lt;chr&gt;, Term.Source.REF.3 &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Term.Accession.Number.3 &lt;chr&gt;, Parameter.Value.Mass.analyzer. &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Term.Source.REF.4 &lt;chr&gt;, Term.Accession.Number.4 &lt;chr&gt;,</span>
+<span class="co">#&gt; #   MS.Assay.Name &lt;chr&gt;, Raw.Spectral.Data.File &lt;chr&gt;, Protocol.REF.3 &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Normalization.Name &lt;lgl&gt;, Derived.Spectral.Data.File &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   Protocol.REF.4 &lt;chr&gt;, Data.Transformation.Name &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   Metabolite.Assignment.File &lt;chr&gt;</span>
 
 <span class="va">fileContents_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/download_study_file.html">download_study_file</a></span><span class="op">(</span><span class="st">'MTBLS264'</span>, <span class="va">studyFileList</span><span class="op">$</span><span class="va">file</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">fileContents_B</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 0 x 1</span>
-<span class="co">#&gt; # … with 1 variable:</span>
-<span class="co">#&gt; #   X.message..Could.not.find.file.m_18V_EI.MS_spectra_database_v2_maf.tsv. &lt;lgl&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 6 x 69</span>
+<span class="co">#&gt;   database_identi… chemical_formula smiles inchi metabolite_iden… mass_to_charge</span>
+<span class="co">#&gt;   &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;                     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 CHEBI:17552      C10H15N5O11P2    Nc1nc… InCh… GDP                        442.</span>
+<span class="co">#&gt; 2 CHEBI:17345      C10H14N5O8P      Nc1nc… InCh… GMP                        362.</span>
+<span class="co">#&gt; 3 CHEBI:16695      C9H13N2O9P       O[C@@… InCh… UMP                        323.</span>
+<span class="co">#&gt; 4 CHEBI:15713      C9H15N2O15P3     O[C@@… InCh… UTP                        483.</span>
+<span class="co">#&gt; 5 CHEBI:17368      C5H4N4O          O=c1[… InCh… Hypoxanthine               135.</span>
+<span class="co">#&gt; 6 CHEBI:17775      C5H4N4O3         O=c1[… InCh… Urate                      167.</span>
+<span class="co">#&gt; # … with 63 more variables: fragmentation &lt;lgl&gt;, modifications &lt;chr&gt;,</span>
+<span class="co">#&gt; #   charge &lt;chr&gt;, retention_time &lt;dbl&gt;, taxid &lt;chr&gt;, species &lt;chr&gt;,</span>
+<span class="co">#&gt; #   database &lt;lgl&gt;, database_version &lt;lgl&gt;, reliability &lt;chr&gt;, uri &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   search_engine &lt;lgl&gt;, search_engine_score &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   smallmolecule_abundance_sub &lt;lgl&gt;, smallmolecule_abundance_stdev_sub &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   smallmolecule_abundance_std_error_sub &lt;lgl&gt;, Volunteer1_blood_0h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer1_plasma_0h_NEG &lt;dbl&gt;, Volunteer1_RBC_0h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer2_blood_0h_NEG &lt;dbl&gt;, Volunteer2_plasma_0h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer2_RBC_0h_NEG &lt;dbl&gt;, Volunteer3_blood_0h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer3_plasma_0h_NEG &lt;dbl&gt;, Volunteer3_RBC_0h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer4_blood_0h_NEG &lt;dbl&gt;, Volunteer4_plasma_0h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer4_RBC_0h_NEG &lt;dbl&gt;, Volunteer1_blood_1h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer1_plasma_1h_NEG &lt;dbl&gt;, Volunteer1_RBC_1h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer2_blood_1h_NEG &lt;dbl&gt;, Volunteer2_plasma_1h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer2_RBC_1h_NEG &lt;dbl&gt;, Volunteer3_blood_1h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer3_plasma_1h_NEG &lt;dbl&gt;, Volunteer3_RBC_1h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer4_blood_1h_NEG &lt;dbl&gt;, Volunteer4_plasma_1h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer4_RBC_1h_NEG &lt;dbl&gt;, Volunteer1_blood_4h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer1_plasma_4h_NEG &lt;dbl&gt;, Volunteer1_RBC_4h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer2_blood_4h_NEG &lt;dbl&gt;, Volunteer2_plasma_4h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer2_RBC_4h_NEG &lt;dbl&gt;, Volunteer3_blood_4h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer3_plasma_4h_NEG &lt;dbl&gt;, Volunteer3_RBC_4h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer4_blood_4h_NEG &lt;dbl&gt;, Volunteer4_plasma_4h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer4_RBC_4h_NEG &lt;dbl&gt;, Volunteer1_blood_24h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer1_plasma_24h_NEG &lt;dbl&gt;, Volunteer1_RBC_24h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer2_blood_24h_NEG &lt;dbl&gt;, Volunteer2_plasma_24h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer2_RBC_24h_NEG &lt;dbl&gt;, Volunteer3_blood_24h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer3_plasma_24h_NEG &lt;dbl&gt;, Volunteer3_RBC_24h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer4_blood_24h_NEG &lt;dbl&gt;, Volunteer4_plasma_24h_NEG &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Volunteer4_RBC_24h_NEG &lt;dbl&gt;</span></code></pre></div>
 </div>
   </div>
 
