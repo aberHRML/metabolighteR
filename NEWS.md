@@ -1,3 +1,7 @@
+# metabolighteR v0.1.3
+* Fix R CMD check CRAN warnings in vignette
+* Minor house-keeping
+
 # metabolighteR v0.1.2
 * Fix R CMD check CRAN warnings in vignette
 
