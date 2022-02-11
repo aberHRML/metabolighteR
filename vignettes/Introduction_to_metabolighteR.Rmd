@@ -37,7 +37,7 @@ metabolighteR can be installed from CRAN or, for the latest development version,
 ```{r install_cran, echo=TRUE, eval=FALSE}
 install.packages('metabolighteR')
 
-remotes::install_github('wilsontom/metabolighteR')
+remotes::install_github('aberHRML/metabolighteR')
 
 library(metabolighteR)
 ```
