@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metabolighteR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -79,7 +79,7 @@
 
       
 
-      </header><script src="Introduction_to_metabolighteR_files/header-attrs-2.7/header-attrs.js"></script><script src="Introduction_to_metabolighteR_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="Introduction_to_metabolighteR_files/header-attrs-2.8/header-attrs.js"></script><script src="Introduction_to_metabolighteR_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to metabolighteR</h1>
@@ -96,7 +96,6 @@
 
     
     
-<pre><code>#&gt; Warning: package 'magrittr' was built under R version 4.0.3</code></pre>
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
@@ -107,10 +106,10 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>metabolighteR can be installed from CRAN or, for the latest development version, directly from GitHub using the <code>remotes</code> package.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'metabolighteR'</span><span class="op">)</span>
 
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">'wilsontom/metabolighteR'</span><span class="op">)</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">'aberHRML/metabolighteR'</span><span class="op">)</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/aberHRML/metabolighteR">metabolighteR</a></span><span class="op">)</span></code></pre></div>
 </div>
@@ -118,15 +117,15 @@
 <h2 class="hasAnchor">
 <a href="#querying-the-repository" class="anchor"></a>Querying the Repository</h2>
 <p>A list of all public study identification codes can be easily retrieved.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">all_study_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_studies.html">get_studies</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">studies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">all_study_ids</span><span class="op">$</span><span class="va">study</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">studies</span><span class="op">)</span>
-<span class="co">#&gt; [1] "MTBLS1044" "MTBLS11"   "MTBLS204"  "MTBLS1073" "MTBLS1040" "MTBLS209"</span></code></pre></div>
+<span class="co">#&gt; [1] "MTBLS129" "MTBLS133" "MTBLS155" "MTBLS165" "MTBLS102" "MTBLS143"</span></code></pre></div>
 <p>Generate a summary table containing; Study ID, Study Title and Study Technology, for publicly available studies.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># For the first five studies</span>
 
 <span class="va">study_titles</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">studies</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">get_study_title</span><span class="op">)</span>
@@ -144,19 +143,19 @@
 
 <span class="va">StudyInfoTable</span>
 <span class="co">#&gt; # A tibble: 5 x 3</span>
-<span class="co">#&gt;   STUDY    Title                                                     TECH       </span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                                                     &lt;chr&gt;      </span>
-<span class="co">#&gt; 1 MTBLS10… Systematic identification of metabolites controlling gen… UPLC-TQ-MS…</span>
-<span class="co">#&gt; 2 MTBLS11  Metabolomic profiles in long day, before bolting, single… GC-TOF-MS  </span>
-<span class="co">#&gt; 3 MTBLS204 Metabolomics analysis of human acute graft-versus-host d… UPLC-MS/MS </span>
-<span class="co">#&gt; 4 MTBLS10… Human Cytomegalovirus pUL37x1 is Important to Remodeling… UPLC-LTQ-M…</span>
-<span class="co">#&gt; 5 MTBLS10… Creating a Reliable Mass Spectral–Retention Time Library… LC-QTOF-MS…</span></code></pre></div>
+<span class="co">#&gt;   STUDY   Title                                        TECH                     </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                                        &lt;chr&gt;                    </span>
+<span class="co">#&gt; 1 MTBLS1… Coordinate Regulation of Metabolite Glycosy… UPLC-TOF-MS;UPLC-LTQ-MS  </span>
+<span class="co">#&gt; 2 MTBLS1… Absolute quantification of metabolites in t… NMR                      </span>
+<span class="co">#&gt; 3 MTBLS1… Release of Ecologically Relevant Metabolite… UPLC-FT-ICR-MS;UPLC-LTQ-…</span>
+<span class="co">#&gt; 4 MTBLS1… Changes in the Milk Metabolome of the Giant… HPLC-LTQ-MS/MS           </span>
+<span class="co">#&gt; 5 MTBLS1… Comparative analysis of the adaptation of S… NMR</span></code></pre></div>
 </div>
 <div id="download-file-contents" class="section level2">
 <h2 class="hasAnchor">
 <a href="#download-file-contents" class="anchor"></a>Download File Contents</h2>
 <p>A list of all available files can be generated using the <code>get_study_files</code> function.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">studyFileList</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_study_files.html">get_study_files</a></span><span class="op">(</span><span class="st">'MTBLS264'</span><span class="op">)</span>
 
@@ -171,7 +170,7 @@
 <span class="co">#&gt; 5 March 20 2017 … FALSE     m_mtbls264_POS_mass_… active 2017032014… metadata_m…</span>
 <span class="co">#&gt; 6 March 20 2017 … FALSE     s_MTBLS264.txt        active 2017032014… metadata_s…</span></code></pre></div>
 <p>The contents of these files can then be downloaded using the <code>download_file</code> function.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">fileContents_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/download_study_file.html">download_study_file</a></span><span class="op">(</span><span class="st">'MTBLS264'</span>, <span class="va">studyFileList</span><span class="op">$</span><span class="va">file</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
