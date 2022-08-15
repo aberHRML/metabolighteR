@@ -6,7 +6,9 @@
 #' @return a data frame. Row and column names are NOT "fixed" via `make.names`
 #' @export
 #' @examples
-#' get_study_desc('MTBLS375')
+#' file <- system.file("examples/m_MTBLS1968_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv",
+#'                     package = "metabolighteR")
+#' maf <- read.MAF(file)
 
 read.MAF <- function(file) {
   maf <- read.delim(file=file,
@@ -21,10 +23,13 @@ read.MAF <- function(file) {
 #'
 #' Write a suitably formatted data frame to a MAF file.
 #'
+#' @param maf MAF data frame to write
 #' @param file either a character string naming a file or a connection open for writing. "" indicates output to the console.
+#' @importFrom utils read.delim write.table
 #' @export
 #' @examples
-#' get_study_desc('MTBLS375')
+#' maf <- create.MAF(nrow=17)
+#' write.MAF(maf, file=tempfile())
 
 write.MAF <- function(maf, file="") {
   write.table(maf,
@@ -38,14 +43,19 @@ write.MAF <- function(maf, file="") {
 #' the spectral data like m/z and retention time,
 #' and the metabolite names, structures and database identifiers.
 #'
-#' If an abundance matrix is given,
+#' If an abundance matrix is given, the the generated MAF will have
+#' as many (empty) spectral and identification metadata rows as abundance rows,
+#' joined to the provided abundance matrix.
 #'
-#' @param assaytype .
+#' nrow and abundances should be mutually exclusive, but that is not yet tested.
+#'
+#' @param assaytype Currently unused, but would be used for different MAF files for NMR and MS
+#' @param nrow Create the MAF with nrow empty rows.
 #' @param abundances is a data frame or matrix with the metabolite abundances,
 #' intensities or concentrations.
 #' @export
 #' @examples
-#' get_study_desc('MTBLS375')
+#' maf <- create.MAF(nrow=17)
 
 create.MAF <- function(assaytype="LCMS",
                                 nrow=NULL,
