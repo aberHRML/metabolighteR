@@ -24,6 +24,8 @@ Suggests:
     tibble,
     knitr,
     rmarkdown,
-    tidyr
+    tidyr,
+    BiocStyle
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
+biocViews:RepositoryData, Metabolomics, MassSpectrometryData
