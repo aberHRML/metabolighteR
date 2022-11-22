@@ -4,8 +4,8 @@ Title: Interface to the 'Metabolights' REST API
 Version: 0.1.4
 Date: 2022-02-09
 Authors@R: c(
-    person("Tom", "Wilson", , "tpw2@aber.ac.uk", c("aut", "cre"),  comment = c(ORCID = '0000-0003-3112-4682'),
-    person(Steffen","Neumann",, "sneumann@ipb-halle.de", "ctb",comment = c(ORCID = "0000-0002-7899-7192")))
+    person("Tom", "Wilson", , "tpw2@aber.ac.uk", c("aut", "cre"),  comment = c(ORCID = '0000-0003-3112-4682')),
+    person("Steffen", "Neumann",, "sneumann@ipb-halle.de", "ctb",comment = c(ORCID = "0000-0002-7899-7192")))
 Description: Access to the 'Metabolights' REST API <https://www.ebi.ac.uk/metabolights/index>. Retrieve elements of publicly available 'Metabolights' studies.  
 Depends:
     magrittr
