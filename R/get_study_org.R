@@ -24,5 +24,8 @@ get_study_org <- function(study_id)
 
   study_org_parse <- study_org %>% httr::content('parsed')
 
+  study_org_tibble <- study_org_parse %>% dplyr::bind_rows()
+
+  return(study_org_tibble)
 
 }
