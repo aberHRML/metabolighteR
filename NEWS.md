@@ -1,3 +1,7 @@
+# metabolighteR v0.1.4
+* Format according to Bioconductor guidelines
+* Functions for handling MAF files (@sneumann)
+
 # metabolighteR v0.1.3
 * Fix R CMD check CRAN warnings in vignette
 * Minor house-keeping
