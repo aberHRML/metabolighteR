@@ -20,6 +20,12 @@
 
 mtbls_key <- function(API_KEY = NULL)
 {
+  if (!is.null(API_KEY)) {
+    if (!is.character(API_KEY)) {
+      stop('API_KEY must be a character', call. = FALSE)
+    }
+  }
+
   if (Sys.getenv('MTBLS_API_KEY') == "") {
     options('MTBLS_API_KEY' = API_KEY)
   } else{
