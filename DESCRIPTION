@@ -17,7 +17,7 @@ Imports:
 License: GPL (>= 3)
 URL: https://github.com/aberHRML/metabolighteR
 BugReports: https://github.com/aberHRML/metabolighteR/issues
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Encoding: UTF-8
 Suggests: 
     covr,
