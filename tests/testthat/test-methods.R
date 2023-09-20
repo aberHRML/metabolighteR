@@ -1,6 +1,7 @@
 context('test-methods')
 
 test_that('tokenless-get-methods', {
+  skip_on_cran()
   expect_true(is.list(get_webservice()))
   expect_true(tibble::is_tibble(all_get_methods()))
   expect_error(mtbls_key(100))

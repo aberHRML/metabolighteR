@@ -5,3 +5,9 @@
     options('BASE_URL' = 'https://www.ebi.ac.uk:443/metabolights/ws')
 
   }
+
+
+
+globalVariables(c('notes',
+                  'description',
+                  'path'))
