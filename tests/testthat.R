@@ -1,4 +1,4 @@
 library(testthat)
 library(metabolighteR)
 
-test_check("metabolighteR")
+skip_on_cran(test_check("metabolighteR"))

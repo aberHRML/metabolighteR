@@ -2,9 +2,9 @@
 title: "Introduction to metabolighteR"
 author:
   - name: Thomas Wilson
-    affiliation: Institute of Biological, Environmental & Rural Sciences (IBERS), Aberystwyth University, UK
+    affiliation: Department of Life Sciences, Aberystwyth University, UK
     email: tpw2@aber.ac.uk
-output: rmarkdown::html_vignette
+output: BiocStyle::html_document
 vignette: >
   %\VignetteIndexEntry{Introduction_to_metabolighteR}
   %\VignetteEngine{knitr::rmarkdown}
@@ -74,7 +74,11 @@ study_tech_filter <- study_tech %>% dplyr::filter(STUDY %in% studies[1:5])
 
 StudyInfoTable <-
   dplyr::left_join(study_titles, study_tech_filter, by = 'STUDY')
+```
 
+
+
+```{r}
 StudyInfoTable
 
 ```

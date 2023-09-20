@@ -14,7 +14,7 @@ download_study_file <- function(study_id, filename)
       getOption('BASE_URL'),
       '/studies/',
       study_id,
-      '/download/public?file=',
+      '/download?file=',
       filename
     ))
 

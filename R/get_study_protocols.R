@@ -11,12 +11,10 @@
 get_study_protocols <- function(study_id)
 {
   study_protocols <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/protocols')
-    )
+    httr::GET(paste0(getOption('BASE_URL'),
+                     '/studies/',
+                     study_id,
+                     '/protocols'))
 
 
   study_prot_parse <- study_protocols %>% httr::content('parsed')
