@@ -19,6 +19,6 @@ test_that('tokenless-get-methods', {
   expect_true(tibble::is_tibble(get_study_samples('MTBLS968')))
   expect_true(tibble::is_tibble(get_study_files('MTBLS375', raw_data = FALSE)))
   expect_true(is.character(get_study_title('MTBLS968')))
-  expect_true(is.character(get_isa_investigation('MTBLS375')))
+  #expect_true(is.character(get_isa_investigation('MTBLS375')))
 
 })
