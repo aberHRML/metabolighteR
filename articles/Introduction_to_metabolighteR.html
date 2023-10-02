@@ -130,7 +130,7 @@ retrieved.</p>
 <span><span class="va">studies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector</a></span><span class="op">(</span><span class="va">all_study_ids</span><span class="op">$</span><span class="va">study</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">studies</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "MTBLS3003" "MTBLS3038" "MTBLS3056" "MTBLS3075" "MTBLS3111" "MTBLS3112"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "MTBLS1" "MTBLS2" "MTBLS3" "MTBLS4" "MTBLS5" "MTBLS6"</span></span></code></pre></div>
 <p>Generate a summary table containing; Study ID, Study Title and Study
 Technology, for publicly available studies.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -151,13 +151,13 @@ Technology, for publicly available studies.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">StudyInfoTable</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 3</span></span></span>
-<span><span class="co">#&gt;   STUDY     Title                                                          TECH </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> MTBLS3003 Anti-anemia drug FG4592 retards the AKI to CKD transition by … <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> MTBLS3038 High complexity and diel dynamics of planktonic microbiome re… <span style="color: #949494;">"</span>UPL…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> MTBLS3056 Anti-anemia drug FG4592 retards the AKI to CKD transition by … <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> MTBLS3075 Dynamic metabolic and transcriptomic profiling reveals the bi… <span style="color: #949494;">"</span>UPL…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> MTBLS3111 A Cross-Platform Metabolomics Comparison Identifies Serum Met… <span style="color: #949494;">""</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   STUDY  Title                                                             TECH </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> MTBLS1 A metabolomic study of urinary changes in type 2 diabetes in hum… NMR  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> MTBLS2 Comparative LC/MS-based profiling of silver nitrate-treated Arab… UPLC…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> MTBLS3 A metabolomic strategy defines the regulation of lipid content a… GC-Q…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> MTBLS4 High-resolution extracted ion chromatography, a new tool for met… UPLC…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> MTBLS5 Inorganic Carbon Limitation in Cells of the Wild Type and Photor… GC-T…</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="download-file-contents">Download File Contents<a class="anchor" aria-label="anchor" href="#download-file-contents"></a>
