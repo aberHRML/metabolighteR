@@ -21,6 +21,9 @@ get_study_desc <- function(study_id)
 
   study_desc_parse <- study_desc %>% httr::content('parsed')
 
-  return(study_desc_parse$description)
+  study_desc_clean <- rvest::html_text(rvest::read_html(charToRaw(paste0(' ', study_desc_parse$description)), trim=T))
+
+
+  return(study_desc_clean)
 
 }
