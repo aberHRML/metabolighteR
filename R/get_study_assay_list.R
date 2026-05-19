@@ -6,7 +6,9 @@
 #' @return a list off the study assays and associated details
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_assay_list('MTBLS375')
+#' }
 
 get_study_assay_list <- function(study_id)
 {
