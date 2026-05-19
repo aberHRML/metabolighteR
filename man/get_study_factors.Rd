@@ -16,5 +16,7 @@ a \code{tibble} of study factors
 Retrieve the study factors and annotation values for a publically available study
 }
 \examples{
+\dontrun{
 get_study_factors('MTBLS375')
+}
 }
