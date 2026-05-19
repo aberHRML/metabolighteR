@@ -16,5 +16,7 @@ a \code{tibble} of study publications
 Retrieve details on any publications that have been associated with the study
 }
 \examples{
+\dontrun{
 get_study_pubs('MTBLS375')
+}
 }
