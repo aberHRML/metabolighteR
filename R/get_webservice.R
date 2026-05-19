@@ -5,7 +5,9 @@
 #' @return a list of the MTBLS webservice information
 #' @export
 #' @examples
+#' \dontrun{
 #' get_webservice()
+#' }
 
 get_webservice <- function()
 {
