@@ -8,7 +8,9 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_files('MTBLS375', raw_data = FALSE)
+#' }
 
 get_study_files <- function(study_id, raw_data = FALSE)
 {
