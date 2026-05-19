@@ -6,7 +6,9 @@
 #' @return a character string of the study assay filename
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_assay_file('MTBLS375')
+#' }
 
 get_study_assay_file <- function(study_id)
 {
