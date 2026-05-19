@@ -16,5 +16,7 @@ a \code{list} of available audit folders
 Retrieve a list of available audit folders for a study
 }
 \examples{
-get_user_studies
+\dontrun{
+get_study_audit('MTBLS375')
+}
 }
