@@ -5,7 +5,9 @@
 #' @return a `tibble` of study id and technology
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_tech()
+#' }
 
 get_study_tech <- function()
 {
