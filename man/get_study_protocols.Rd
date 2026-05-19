@@ -16,5 +16,7 @@ a \code{tibble} of study protocols
 Retrieve the protocol information that has been deposited for a public study
 }
 \examples{
+\dontrun{
 get_study_protocols('MTBLS375')
+}
 }
