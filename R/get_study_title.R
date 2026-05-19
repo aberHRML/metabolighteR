@@ -6,7 +6,9 @@
 #' @return a character string of the study title
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_title('MTBLS375')
+#' }
 
 get_study_title <- function(study_id)
 {
