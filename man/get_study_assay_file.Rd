@@ -16,5 +16,7 @@ a character string of the study assay filename
 Retrieve the filename details for available assays of a public study
 }
 \examples{
+\dontrun{
 get_study_assay_file('MTBLS375')
+}
 }
