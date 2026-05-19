@@ -9,8 +9,10 @@
 
 search_metabolite <- function(search_name)
 {
+  encoded_search_name <- utils::URLencode(search_name, reserved = TRUE)
+
   metabolite_search_res <- mtbls_get(
-    glue::glue('/search/name?search_value={search_name}')
+    glue::glue('/search/name?search_value={encoded_search_name}')
   )
 
 

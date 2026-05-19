@@ -25,17 +25,33 @@ test_that("all_get_methods filters to public GET endpoints", {
 })
 
 test_that("download_study_file parses tab-delimited text content", {
+  captured <- NULL
+
   testthat::local_mocked_bindings(
-    GET = function(...) structure(list(), class = "fake_response"),
+    GET = function(url, ...) {
+      captured <<- url
+      structure(list(), class = "fake_response")
+    },
     content = function(..., as = NULL) "col1\tcol2\nA\tB\n",
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
-  out <- download_study_file("MTBLS1", "table.tsv")
+  original_base_url <- getOption("BASE_URL")
+  on.exit(options(BASE_URL = original_base_url), add = TRUE)
+
+  options(BASE_URL = "https://example.test")
+
+  out <- download_study_file("MTBLS1", "table name.tsv")
 
   expect_s3_class(out, "tbl_df")
   expect_equal(out$col1, "A")
   expect_equal(out$col2, "B")
+  expect_equal(
+    captured,
+    "https://example.test/studies/MTBLS1/download?file=table%20name.tsv"
+  )
 })
 
 test_that("get_isa_investigation uses authenticated investigation endpoint", {
@@ -48,6 +64,8 @@ test_that("get_isa_investigation uses authenticated investigation endpoint", {
     },
     content = function(...) "INVESTIGATION",
     add_headers = function(...) list(...),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -60,7 +78,11 @@ test_that("get_isa_investigation uses authenticated investigation endpoint", {
   out <- get_isa_investigation("MTBLS1")
 
   expect_equal(captured$url, "https://example.test/studies/MTBLS1/investigation")
-  expect_equal(captured$dots[[1]]$user_token, "secret")
+  expect_true(any(vapply(
+    captured$dots,
+    function(x) is.list(x) && identical(x$user_token, "secret"),
+    logical(1)
+  )))
   expect_equal(out, "INVESTIGATION")
 })
 
@@ -74,6 +96,8 @@ test_that("get_private_studies returns a tibble when studies exist", {
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(data = c("MTBLS1", "MTBLS2")),
     add_headers = function(...) list(...),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -94,6 +118,8 @@ test_that("get_private_studies returns invisible NULL with a message when no dat
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(data = list()),
     add_headers = function(...) list(...),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -105,6 +131,8 @@ test_that("get_studies returns a tibble of study ids", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list("MTBLS1", "MTBLS2"),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -118,6 +146,8 @@ test_that("get_study_assay_file returns assay filenames", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(data = list(assays = list(fileA = "a.txt", fileB = "b.txt"))),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -132,6 +162,8 @@ test_that("get_study_assay_list returns the first assay entry", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(data = list(assays = list(assay, list(name = "assay2")))),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -150,6 +182,8 @@ test_that("get_study_audit returns parsed audit content", {
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(entries = c("audit1", "audit2")),
     add_headers = function(...) list(...),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -189,6 +223,8 @@ test_that("get_study_contacts flattens contacts into a tibble", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) payload,
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -204,6 +240,8 @@ test_that("get_study_desc strips markup from the returned description", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(description = "<p>Study <b>description</b></p>"),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
   testthat::local_mocked_bindings(
@@ -228,6 +266,8 @@ test_that("get_study_descriptors returns a tibble of descriptor records", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) payload,
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -259,6 +299,8 @@ test_that("get_study_factors flattens factor metadata into a tibble", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) payload,
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -279,6 +321,8 @@ test_that("get_study_files uses the public endpoint when raw_data is FALSE", {
       structure(list(), class = "fake_response")
     },
     content = function(...) list(study = list(list(name = "metadata.tsv", type = "derived"))),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -290,7 +334,7 @@ test_that("get_study_files uses the public endpoint when raw_data is FALSE", {
   out <- get_study_files("MTBLS1", raw_data = FALSE)
 
   expect_equal(captured$url, "https://example.test/studies/MTBLS1/files?include_raw_data=false")
-  expect_equal(length(captured$dots), 0)
+  expect_equal(length(captured$dots), 2)
   expect_equal(out$name, "metadata.tsv")
 })
 
@@ -304,6 +348,8 @@ test_that("get_study_files uses the authenticated endpoint when raw_data is TRUE
     },
     content = function(...) list(study = list(list(name = "raw.mzML", type = "raw"))),
     add_headers = function(...) list(...),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -316,7 +362,11 @@ test_that("get_study_files uses the authenticated endpoint when raw_data is TRUE
   out <- get_study_files("MTBLS1", raw_data = TRUE)
 
   expect_equal(captured$url, "https://example.test/studies/MTBLS1/files?include_raw_data=true")
-  expect_equal(captured$dots[[1]]$user_token, "secret")
+  expect_true(any(vapply(
+    captured$dots,
+    function(x) is.list(x) && identical(x$user_token, "secret"),
+    logical(1)
+  )))
   expect_equal(out$name, "raw.mzML")
 })
 
@@ -324,6 +374,8 @@ test_that("get_study_meta strips labels from status and release date", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(data = c("status:PUBLIC", "release-date:2024-02-03")),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -348,6 +400,8 @@ test_that("get_study_org binds parsed organism records into a tibble", {
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) payload,
     add_headers = function(...) list(...),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -375,6 +429,8 @@ test_that("get_study_protocols flattens protocol records and parses parameters",
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) payload,
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -401,6 +457,8 @@ test_that("get_study_pubs removes term accession and renames status column", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) payload,
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -429,6 +487,8 @@ test_that("get_study_samples binds sample mapping entries into a tibble", {
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) payload,
     add_headers = function(...) list(...),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -448,6 +508,8 @@ test_that("get_study_tech replaces missing technology entries with string NA", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) payload,
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -461,6 +523,8 @@ test_that("get_study_title returns the parsed title", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(title = "My study title"),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -477,6 +541,8 @@ test_that("get_user_studies returns parsed user study data", {
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(studies = c("MTBLS10", "MTBLS11")),
     add_headers = function(...) list(...),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -489,6 +555,8 @@ test_that("get_webservice returns parsed webservice metadata", {
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(name = "MetaboLights", version = "1.0"),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -520,6 +588,8 @@ test_that("search_metabolite returns the first matched metabolite", {
         )
       )
     },
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
     .package = "httr"
   )
 
@@ -528,9 +598,9 @@ test_that("search_metabolite returns the first matched metabolite", {
 
   options(BASE_URL = "https://example.test")
 
-  out <- search_metabolite("proline")
+  out <- search_metabolite("proline test")
 
-  expect_equal(captured, "https://example.test/search/name?search_value=proline")
+  expect_equal(captured, "https://example.test/search/name?search_value=proline%20test")
   expect_equal(out$name, "Proline")
   expect_equal(out$databaseId, "HMDB0000162")
 })

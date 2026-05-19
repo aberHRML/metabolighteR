@@ -85,3 +85,65 @@ test_that("mtbls_api_spec_url derives the spec endpoint from BASE_URL", {
     "https://example.test/metabolights/ws/api/spec"
   )
 })
+
+test_that("mtbls_get applies timeout and package user agent", {
+  captured <- NULL
+  original_base_url <- getOption("BASE_URL")
+  original_timeout <- getOption("metabolighteR.timeout")
+
+  on.exit({
+    options(BASE_URL = original_base_url)
+    options(metabolighteR.timeout = original_timeout)
+  }, add = TRUE)
+
+  options(
+    BASE_URL = "https://example.test/metabolights/ws",
+    metabolighteR.timeout = 12
+  )
+
+  testthat::local_mocked_bindings(
+    GET = function(url, ...) {
+      captured <<- list(url = url, dots = list(...))
+      structure(list(), class = "fake_response")
+    },
+    content = function(...) list(ok = TRUE),
+    timeout = function(seconds) list(timeout = seconds),
+    user_agent = function(agent) list(agent = agent),
+    .package = "httr"
+  )
+
+  out <- metabolighteR:::mtbls_get("/studies")
+
+  expect_equal(captured$url, "https://example.test/metabolights/ws/studies")
+  expect_equal(captured$dots[[1]]$timeout, 12)
+  expect_match(captured$dots[[2]]$agent, "^metabolighteR/")
+  expect_true(out$ok)
+})
+
+test_that("mtbls_get retries transient request failures", {
+  attempt <- 0
+  original_base_url <- getOption("BASE_URL")
+
+  on.exit(options(BASE_URL = original_base_url), add = TRUE)
+
+  options(BASE_URL = "https://example.test/metabolights/ws")
+
+  testthat::local_mocked_bindings(
+    GET = function(...) {
+      attempt <<- attempt + 1
+      if (attempt < 3) {
+        stop("temporary network issue")
+      }
+      structure(list(), class = "fake_response")
+    },
+    content = function(...) list(ok = TRUE),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
+    .package = "httr"
+  )
+
+  out <- metabolighteR:::mtbls_get("/studies")
+
+  expect_equal(attempt, 3)
+  expect_true(out$ok)
+})
