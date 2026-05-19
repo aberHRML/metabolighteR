@@ -12,16 +12,7 @@
 
 get_study_desc <- function(study_id)
 {
-  study_desc <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/description')
-    )
-
-
-  study_desc_parse <- study_desc %>% httr::content('parsed')
+  study_desc_parse <- mtbls_get(paste0('/studies/', study_id, '/description'))
 
   study_desc_clean <- rvest::html_text(rvest::read_html(charToRaw(paste0(' ', study_desc_parse$description)), trim=T))
 

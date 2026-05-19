@@ -12,15 +12,7 @@
 
 get_study_title <- function(study_id)
 {
-  study_title <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/title')
-    )
-
-  study_title_parse <- study_title %>% httr::content('parsed')
+  study_title_parse <- mtbls_get(paste0('/studies/', study_id, '/title'))
 
   return(study_title_parse$title)
 

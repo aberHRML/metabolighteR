@@ -12,17 +12,8 @@
 
 get_study_assay_list <- function(study_id)
 {
-  study_assays <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-
-             '/assays?list_only=false')
-    )
-
-
-  study_assays_parse <- study_assays %>% httr::content('parsed')
+  study_assays_parse <-
+    mtbls_get(paste0('/studies/', study_id, '/assays?list_only=false'))
 
   return(study_assays_parse$data$assays[[1]])
 

@@ -65,6 +65,11 @@ test_that("get_isa_investigation uses authenticated investigation endpoint", {
 })
 
 test_that("get_private_studies returns a tibble when studies exist", {
+  original_api_key <- getOption("MTBLS_API_KEY")
+  on.exit(options(MTBLS_API_KEY = original_api_key), add = TRUE)
+
+  options(MTBLS_API_KEY = "secret")
+
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(data = c("MTBLS1", "MTBLS2")),
@@ -80,6 +85,11 @@ test_that("get_private_studies returns a tibble when studies exist", {
 })
 
 test_that("get_private_studies returns invisible NULL with a message when no data exist", {
+  original_api_key <- getOption("MTBLS_API_KEY")
+  on.exit(options(MTBLS_API_KEY = original_api_key), add = TRUE)
+
+  options(MTBLS_API_KEY = "secret")
+
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(data = list()),
@@ -131,6 +141,11 @@ test_that("get_study_assay_list returns the first assay entry", {
 })
 
 test_that("get_study_audit returns parsed audit content", {
+  original_api_key <- getOption("MTBLS_API_KEY")
+  on.exit(options(MTBLS_API_KEY = original_api_key), add = TRUE)
+
+  options(MTBLS_API_KEY = "secret")
+
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(entries = c("audit1", "audit2")),
@@ -319,6 +334,11 @@ test_that("get_study_meta strips labels from status and release date", {
 })
 
 test_that("get_study_org binds parsed organism records into a tibble", {
+  original_api_key <- getOption("MTBLS_API_KEY")
+  on.exit(options(MTBLS_API_KEY = original_api_key), add = TRUE)
+
+  options(MTBLS_API_KEY = "secret")
+
   payload <- list(
     list(organism = "Homo sapiens", part = "plasma"),
     list(organism = "Mus musculus", part = "liver")
@@ -393,6 +413,11 @@ test_that("get_study_pubs removes term accession and renames status column", {
 })
 
 test_that("get_study_samples binds sample mapping entries into a tibble", {
+  original_api_key <- getOption("MTBLS_API_KEY")
+  on.exit(options(MTBLS_API_KEY = original_api_key), add = TRUE)
+
+  options(MTBLS_API_KEY = "secret")
+
   payload <- list(
     list(
       list(filename = "file1.raw", sample = "Sample1", score = 1),
@@ -443,6 +468,11 @@ test_that("get_study_title returns the parsed title", {
 })
 
 test_that("get_user_studies returns parsed user study data", {
+  original_api_key <- getOption("MTBLS_API_KEY")
+  on.exit(options(MTBLS_API_KEY = original_api_key), add = TRUE)
+
+  options(MTBLS_API_KEY = "secret")
+
   testthat::local_mocked_bindings(
     GET = function(...) structure(list(), class = "fake_response"),
     content = function(...) list(studies = c("MTBLS10", "MTBLS11")),

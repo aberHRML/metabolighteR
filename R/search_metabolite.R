@@ -9,12 +9,9 @@
 
 search_metabolite <- function(search_name)
 {
-  metabolite_search <-
-    httr::GET(glue::glue(getOption('BASE_URL'), '/search/name?search_value=', {
-      search_name
-    }))
-
-  metabolite_search_res <- metabolite_search %>% httr::content('parsed')
+  metabolite_search_res <- mtbls_get(
+    glue::glue('/search/name?search_value={search_name}')
+  )
 
 
   metabolite_tibble <-

@@ -11,11 +11,10 @@
 #' }
 
 get_study_audit <- function(study_id) {
-  audit <- httr::GET(
-    paste0(getOption('BASE_URL'),
-           '/studies/', study_id, '/audit'),
-    httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
-  ) %>% httr::content('parsed')
+  audit <- mtbls_get(
+    paste0('/studies/', study_id, '/audit'),
+    authenticate = TRUE
+  )
 
   return(audit)
 }

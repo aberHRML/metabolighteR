@@ -13,21 +13,10 @@
 
 get_study_samples <- function(study_id)
 {
-  study_samples <-
-    httr::GET(
-      paste0(
-        getOption('BASE_URL'),
-        '/studies/',
-        study_id,
-        '/files/samples'
-      ),
-      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
-    )
-
-
-
-  study_samples_content <-
-    study_samples %>% httr::content('parsed')
+  study_samples_content <- mtbls_get(
+    paste0('/studies/', study_id, '/files/samples'),
+    authenticate = TRUE
+  )
 
 
   study_sample_tibble <-

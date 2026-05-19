@@ -8,8 +8,18 @@
 
 all_get_methods <- function()
 {
-  api_info <-
-    jsonlite::fromJSON('https://www.ebi.ac.uk/metabolights/ws/api/spec')
+  api_info <- tryCatch(
+    jsonlite::fromJSON(mtbls_api_spec_url()),
+    error = function(err) {
+      stop(
+        sprintf(
+          "Failed to fetch MetaboLights API specification: %s",
+          conditionMessage(err)
+        ),
+        call. = FALSE
+      )
+    }
+  )
 
   api_ref <- tibble::as_tibble(api_info$apis)
 

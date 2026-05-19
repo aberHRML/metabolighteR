@@ -59,3 +59,29 @@ test_that(".onLoad configures the default BASE_URL option", {
 
   expect_equal(getOption("BASE_URL"), "https://www.ebi.ac.uk:443/metabolights/ws")
 })
+
+test_that("mtbls_get errors for authenticated requests without an API key", {
+  original_api_key <- getOption("MTBLS_API_KEY")
+
+  on.exit(options(MTBLS_API_KEY = original_api_key), add = TRUE)
+
+  options(MTBLS_API_KEY = NULL)
+
+  expect_error(
+    metabolighteR:::mtbls_get("/studies/user", authenticate = TRUE),
+    "MTBLS_API_KEY option is not configured"
+  )
+})
+
+test_that("mtbls_api_spec_url derives the spec endpoint from BASE_URL", {
+  original_base_url <- getOption("BASE_URL")
+
+  on.exit(options(BASE_URL = original_base_url), add = TRUE)
+
+  options(BASE_URL = "https://example.test/metabolights/ws")
+
+  expect_equal(
+    metabolighteR:::mtbls_api_spec_url(),
+    "https://example.test/metabolights/ws/api/spec"
+  )
+})

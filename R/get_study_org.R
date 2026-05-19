@@ -12,17 +12,10 @@
 
 get_study_org <- function(study_id)
 {
-  study_org <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/organisms'),
-      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
-    )
-
-
-  study_org_parse <- study_org %>% httr::content('parsed')
+  study_org_parse <- mtbls_get(
+    paste0('/studies/', study_id, '/organisms'),
+    authenticate = TRUE
+  )
 
   study_org_tibble <- study_org_parse %>% dplyr::bind_rows()
 
