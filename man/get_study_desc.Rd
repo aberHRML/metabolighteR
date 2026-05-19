@@ -16,5 +16,7 @@ a character string of the study description
 Retrieve the abstract based description of a public study
 }
 \examples{
+\dontrun{
 get_study_desc('MTBLS375')
+}
 }
