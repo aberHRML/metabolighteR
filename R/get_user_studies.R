@@ -5,7 +5,9 @@
 #' @return a `list` of user owned studies
 #' @export
 #' @examples
-#' get_user_studies
+#' \dontrun{
+#' get_user_studies()
+#' }
 
 get_user_studies <- function() {
 
