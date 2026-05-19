@@ -6,7 +6,9 @@
 #' @return a `list` of available audit folders
 #' @export
 #' @examples
-#' get_user_studies
+#' \dontrun{
+#' get_study_audit('MTBLS375')
+#' }
 
 get_study_audit <- function(study_id) {
   audit <- httr::GET(
