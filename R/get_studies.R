@@ -5,7 +5,9 @@
 #' @return a `tibble` of Study IDs
 #' @export
 #' @examples
+#' \dontrun{
 #' get_studies()
+#' }
 
 get_studies <- function() {
   studies <-
