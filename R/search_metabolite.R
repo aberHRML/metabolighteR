@@ -3,7 +3,9 @@
 #' @param search_name A character string of a chemical name to search for
 #' @export
 #' @examples
+#' \dontrun{
 #' search_metabolite('proline')
+#' }
 
 search_metabolite <- function(search_name)
 {
