@@ -6,7 +6,9 @@
 #' @return a `tibble` of study publications
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_pubs('MTBLS375')
+#' }
 
 get_study_pubs <- function(study_id)
 {
