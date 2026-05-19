@@ -6,7 +6,9 @@
 #' @return a `tibble` of study protocols
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_protocols('MTBLS375')
+#' }
 
 get_study_protocols <- function(study_id)
 {
