@@ -6,7 +6,9 @@
 #' @return a `tibble` of study factors
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_factors('MTBLS375')
+#' }
 
 get_study_factors <- function(study_id)
 {
@@ -37,4 +39,3 @@ get_study_factors <- function(study_id)
 
   return(study_fcts_tibble)
 }
-
