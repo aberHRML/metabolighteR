@@ -13,5 +13,7 @@ search_metabolite(search_name)
 Search Metabolite
 }
 \examples{
+\dontrun{
 search_metabolite('proline')
+}
 }
