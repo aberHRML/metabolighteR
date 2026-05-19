@@ -16,5 +16,7 @@ a character string of the study title
 Retrieve the full title of the study
 }
 \examples{
+\dontrun{
 get_study_title('MTBLS375')
+}
 }
