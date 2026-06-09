@@ -6,20 +6,13 @@
 #' @return a `tibble` of study publications
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_pubs('MTBLS375')
+#' }
 
 get_study_pubs <- function(study_id)
 {
-  study_pubs <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/publications')
-    )
-
-
-  study_pubs_parse <- study_pubs %>% httr::content('parsed')
+  study_pubs_parse <- mtbls_get(paste0('/studies/', study_id, '/publications'))
 
 
   study_pubs_tibble <- purrr::map(study_pubs_parse$publications, ~ {

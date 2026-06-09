@@ -2,6 +2,10 @@ context('test-methods')
 
 test_that('tokenless-get-methods', {
   skip_on_cran()
+  skip_if_offline()
+  if (!identical(Sys.getenv('METABOLIGHTER_RUN_LIVE_TESTS'), 'true')) {
+    skip('Live API tests disabled')
+  }
   expect_true(is.list(get_webservice()))
   expect_true(tibble::is_tibble(all_get_methods()))
   expect_error(mtbls_key(100))

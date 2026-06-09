@@ -8,6 +8,4 @@
 
 
 
-globalVariables(c('notes',
-                  'description',
-                  'path'))
+globalVariables(c('notes', 'description', 'path', 'study_fcts_tibble'))

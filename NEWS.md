@@ -1,3 +1,7 @@
+# metabolighteR v0.1.5
+* Function for searching metabolites
+* Minior housekeeping
+
 # metabolighteR v0.1.4
 * Format according to Bioconductor guidelines
 * Functions for handling MAF files (@sneumann)

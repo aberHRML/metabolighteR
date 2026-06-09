@@ -9,18 +9,13 @@
 
 download_study_file <- function(study_id, filename)
 {
-  file_download <-
-    httr::GET(paste0(
-      getOption('BASE_URL'),
-      '/studies/',
-      study_id,
-      '/download?file=',
-      filename
-    ))
-
+  encoded_filename <- utils::URLencode(filename, reserved = TRUE)
 
   file_content <-
-    httr::content(file_download, 'text') %>% textConnection() %>% readLines() %>%
+    mtbls_get(
+      paste0('/studies/', study_id, '/download?file=', encoded_filename),
+      parse = 'text'
+    ) %>% textConnection() %>% readLines() %>%
     utils::read.delim(text = ., sep = '\t') %>% tibble::as_tibble()
 
   return(file_content)

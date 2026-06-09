@@ -13,20 +13,12 @@
 
 get_isa_investigation <- function(study_id)
 {
-  isa_investigation <-
-    httr::GET(
-      paste0(
-        getOption('BASE_URL'),
-        '/studies/',
-        study_id,
-        '/investigation'
-      ),
-      httr::add_headers(user_token = getOption('MTBLS_API_KEY'))
-    )
-
-
   isa_investigation_parse <-
-    isa_investigation %>% httr::content('parsed')
+    mtbls_get(
+      paste0('/studies/', study_id, '/investigation'),
+      authenticate = TRUE,
+      parse = 'parsed'
+    )
 
   return(isa_investigation_parse)
 }

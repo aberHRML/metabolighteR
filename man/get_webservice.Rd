@@ -13,5 +13,7 @@ a list of the MTBLS webservice information
 Retrieve details about the Metabolights RESTful WebService
 }
 \examples{
+\dontrun{
 get_webservice()
+}
 }

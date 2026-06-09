@@ -6,20 +6,13 @@
 #' @return a `tibble` of study meta data
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_meta('MTBLS375')
+#' }
 
 get_study_meta <- function(study_id)
 {
-  study_meta <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/meta-info')
-    )
-
-
-  study_meta_parse <- study_meta %>% httr::content('parsed')
+  study_meta_parse <- mtbls_get(paste0('/studies/', study_id, '/meta-info'))
 
   study_meta_tibble <-
     dplyr::tibble(status = study_meta_parse$data[[1]],

@@ -16,5 +16,7 @@ a list off the study assays and associated details
 Retrieve the abstract based description of a public study
 }
 \examples{
+\dontrun{
 get_study_assay_list('MTBLS375')
+}
 }

@@ -5,16 +5,13 @@
 #' @return a `tibble` of study id and technology
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_tech()
+#' }
 
 get_study_tech <- function()
 {
-  study_tech <-
-    httr::GET(paste0(getOption('BASE_URL'),
-                     '/studies/technology'))
-
-
-  study_tech_parse <- study_tech %>% httr::content('parsed')
+  study_tech_parse <- mtbls_get('/studies/technology')
 
 
   for (i in seq_along(study_tech_parse)) {

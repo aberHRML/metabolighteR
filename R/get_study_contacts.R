@@ -6,21 +6,14 @@
 #' @return a `tibble` of study contacts
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_contacts('MTBLS375')
+#' }
 #'
 
 get_study_contacts <- function(study_id)
 {
-  study_contacts <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/contacts')
-    )
-
-
-  study_contacts_parse <- study_contacts %>% httr::content('parsed')
+  study_contacts_parse <- mtbls_get(paste0('/studies/', study_id, '/contacts'))
 
   study_contact_list <- list()
   for (i in seq_along(study_contacts_parse$contacts)) {

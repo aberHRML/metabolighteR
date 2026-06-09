@@ -6,20 +6,13 @@
 #' @return a character string of the study assay filename
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_assay_file('MTBLS375')
+#' }
 
 get_study_assay_file <- function(study_id)
 {
-  study_assay_file <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/assays')
-    )
-
-
-  study_assay_file_parse <- study_assay_file %>% httr::content('parsed')
+  study_assay_file_parse <- mtbls_get(paste0('/studies/', study_id, '/assays'))
 
   return(unlist(study_assay_file_parse$data$assays))
 

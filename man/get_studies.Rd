@@ -13,5 +13,7 @@ a \code{tibble} of Study IDs
 Retrieve a list of all publically available Metabolights studies
 }
 \examples{
+\dontrun{
 get_studies()
+}
 }

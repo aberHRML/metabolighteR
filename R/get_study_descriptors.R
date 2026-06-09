@@ -6,21 +6,14 @@
 #' @return a `tibble` of study descriptors
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_descriptors('MTBLS375')
+#' }
 
 
 get_study_descriptors <- function(study_id)
 {
-  study_dcpts <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/descriptors')
-    )
-
-
-  study_dcpts_parse <- study_dcpts %>% httr::content('parsed')
+  study_dcpts_parse <- mtbls_get(paste0('/studies/', study_id, '/descriptors'))
 
 
   length(study_dcpts_parse$studyDesignDescriptors)

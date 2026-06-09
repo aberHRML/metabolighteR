@@ -16,5 +16,7 @@ a \code{tibble} of study descriptors
 Retrieve the study descriptors and annotation values for a publically available study
 }
 \examples{
+\dontrun{
 get_study_descriptors('MTBLS375')
+}
 }

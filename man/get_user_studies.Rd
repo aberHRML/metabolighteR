@@ -13,5 +13,7 @@ a \code{list} of user owned studies
 Retrieve a list of studies for a user
 }
 \examples{
-get_user_studies
+\dontrun{
+get_user_studies()
+}
 }

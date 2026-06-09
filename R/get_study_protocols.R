@@ -6,18 +6,13 @@
 #' @return a `tibble` of study protocols
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_protocols('MTBLS375')
+#' }
 
 get_study_protocols <- function(study_id)
 {
-  study_protocols <-
-    httr::GET(paste0(getOption('BASE_URL'),
-                     '/studies/',
-                     study_id,
-                     '/protocols'))
-
-
-  study_prot_parse <- study_protocols %>% httr::content('parsed')
+  study_prot_parse <- mtbls_get(paste0('/studies/', study_id, '/protocols'))
 
   study_prot_list <- list()
   for (i in seq_along(study_prot_parse$protocols)) {

@@ -4,7 +4,7 @@ author:
   - name: Thomas Wilson
     affiliation: Department of Life Sciences, Aberystwyth University, UK
     email: tpw2@aber.ac.uk
-output: BiocStyle::html_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction_to_metabolighteR}
   %\VignetteEngine{knitr::rmarkdown}
@@ -42,13 +42,14 @@ remotes::install_github('aberHRML/metabolighteR')
 library(metabolighteR)
 ```
 
+The repository queries below are shown for reference and are not executed when the vignette is built.
 
 
 ## Querying the Repository
 
 A list of all public study identification codes can be easily retrieved.
 
-```{r, get_studies, echo=TRUE, eval=TRUE}
+```{r, get_studies, echo=TRUE, eval=FALSE}
 all_study_ids <- get_studies()
 
 studies <- as.vector(all_study_ids$study)
@@ -59,7 +60,7 @@ head(studies)
 
 Generate a summary table containing; Study ID, Study Title and Study Technology, for publicly available studies. 
 
-```{r, get_study_info, echo=TRUE, eval=TRUE}
+```{r, get_study_info, echo=TRUE, eval=FALSE}
 # For the first five studies
 
 study_titles <- purrr::map(studies[1:5], get_study_title)
@@ -78,7 +79,7 @@ StudyInfoTable <-
 
 
 
-```{r}
+```{r, eval=FALSE}
 StudyInfoTable
 
 ```
@@ -88,7 +89,7 @@ StudyInfoTable
 
 A list of all available files can be generated using the `get_study_files` function.
 
-```{r, file_list, echo=TRUE, eval=TRUE}
+```{r, file_list, echo=TRUE, eval=FALSE}
 
 studyFileList <- get_study_files('MTBLS264')
 
@@ -97,7 +98,7 @@ studyFileList
 
 The contents of these files can then be downloaded using the `download_file` function.
 
-```{r, download_file, echo=TRUE, eval=TRUE}
+```{r, download_file, echo=TRUE, eval=FALSE}
 
 fileContents_A <- download_study_file('MTBLS264', studyFileList$file[1])
 
@@ -109,8 +110,6 @@ head(fileContents_B)
 
 
 ```
-
-
 
 
 

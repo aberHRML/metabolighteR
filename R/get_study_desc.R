@@ -6,21 +6,17 @@
 #' @return a character string of the study description
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_desc('MTBLS375')
+#' }
 
 get_study_desc <- function(study_id)
 {
-  study_desc <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/description')
-    )
+  study_desc_parse <- mtbls_get(paste0('/studies/', study_id, '/description'))
+
+  study_desc_clean <- rvest::html_text(rvest::read_html(charToRaw(paste0(' ', study_desc_parse$description)), trim=T))
 
 
-  study_desc_parse <- study_desc %>% httr::content('parsed')
-
-  return(study_desc_parse$description)
+  return(study_desc_clean)
 
 }

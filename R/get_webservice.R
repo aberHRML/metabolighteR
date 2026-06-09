@@ -5,10 +5,12 @@
 #' @return a list of the MTBLS webservice information
 #' @export
 #' @examples
+#' \dontrun{
 #' get_webservice()
+#' }
 
 get_webservice <- function()
 {
-  webservice_info <- httr::GET(getOption('BASE_URL')) %>% httr::content('parsed')
+  webservice_info <- mtbls_get()
   return(webservice_info)
 }

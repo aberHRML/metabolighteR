@@ -6,19 +6,13 @@
 #' @return a `tibble` of study factors
 #' @export
 #' @examples
+#' \dontrun{
 #' get_study_factors('MTBLS375')
+#' }
 
 get_study_factors <- function(study_id)
 {
-  study_fcts <-
-    httr::GET(
-      paste0(getOption('BASE_URL'),
-             '/studies/',
-             study_id,
-             '/factors')
-    )
-
-  study_fcts_parse <- study_fcts %>% httr::content('parsed')
+  study_fcts_parse <- mtbls_get(paste0('/studies/', study_id, '/factors'))
 
   study_fcts_list <- list()
   for (i in seq_along(study_fcts_parse$factors)) {
@@ -37,4 +31,3 @@ get_study_factors <- function(study_id)
 
   return(study_fcts_tibble)
 }
-
