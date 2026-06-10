@@ -24,6 +24,20 @@ test_that("all_get_methods filters to public GET endpoints", {
   expect_equal(out$description, "List studies")
 })
 
+test_that("all_get_methods wraps API specification fetch failures", {
+  testthat::local_mocked_bindings(
+    fromJSON = function(...) {
+      stop("spec endpoint unavailable")
+    },
+    .package = "jsonlite"
+  )
+
+  expect_error(
+    all_get_methods(),
+    "Failed to fetch MetaboLights API specification: spec endpoint unavailable"
+  )
+})
+
 test_that("download_study_file parses tab-delimited text content", {
   captured <- NULL
 

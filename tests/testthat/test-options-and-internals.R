@@ -73,6 +73,39 @@ test_that("mtbls_get errors for authenticated requests without an API key", {
   )
 })
 
+test_that("mtbls_get errors when BASE_URL is not configured", {
+  original_base_url <- getOption("BASE_URL")
+
+  on.exit(options(BASE_URL = original_base_url), add = TRUE)
+
+  options(BASE_URL = NULL)
+
+  expect_error(
+    metabolighteR:::mtbls_get("/studies"),
+    "BASE_URL option is not configured"
+  )
+})
+
+test_that("mtbls_get errors when timeout is invalid", {
+  original_base_url <- getOption("BASE_URL")
+  original_timeout <- getOption("metabolighteR.timeout")
+
+  on.exit({
+    options(BASE_URL = original_base_url)
+    options(metabolighteR.timeout = original_timeout)
+  }, add = TRUE)
+
+  options(
+    BASE_URL = "https://example.test/metabolights/ws",
+    metabolighteR.timeout = 0
+  )
+
+  expect_error(
+    metabolighteR:::mtbls_get("/studies"),
+    "metabolighteR.timeout option must be a positive number"
+  )
+})
+
 test_that("mtbls_api_spec_url derives the spec endpoint from BASE_URL", {
   original_base_url <- getOption("BASE_URL")
 
@@ -146,4 +179,111 @@ test_that("mtbls_get retries transient request failures", {
 
   expect_equal(attempt, 3)
   expect_true(out$ok)
+})
+
+test_that("mtbls_get errors after repeated request failures", {
+  original_base_url <- getOption("BASE_URL")
+
+  on.exit(options(BASE_URL = original_base_url), add = TRUE)
+
+  options(BASE_URL = "https://example.test/metabolights/ws")
+
+  testthat::local_mocked_bindings(
+    GET = function(...) {
+      stop("persistent network issue")
+    },
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
+    .package = "httr"
+  )
+
+  expect_error(
+    metabolighteR:::mtbls_get("/studies"),
+    "MetaboLights request failed for `/studies`: persistent network issue"
+  )
+})
+
+test_that("mtbls_get retries transient server responses before succeeding", {
+  attempt <- 0
+  original_base_url <- getOption("BASE_URL")
+
+  on.exit(options(BASE_URL = original_base_url), add = TRUE)
+
+  options(BASE_URL = "https://example.test/metabolights/ws")
+
+  testthat::local_mocked_bindings(
+    GET = function(...) {
+      attempt <<- attempt + 1
+      if (attempt < 3) {
+        return(structure(list(status_code = 503), class = "response"))
+      }
+      structure(list(status_code = 200), class = "response")
+    },
+    stop_for_status = function(response) {
+      if (response$status_code >= 400) {
+        stop(sprintf("HTTP %s", response$status_code))
+      }
+      invisible(response)
+    },
+    content = function(...) list(ok = TRUE),
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
+    .package = "httr"
+  )
+
+  out <- metabolighteR:::mtbls_get("/studies")
+
+  expect_equal(attempt, 3)
+  expect_true(out$ok)
+})
+
+test_that("mtbls_get wraps non-retriable HTTP errors", {
+  original_base_url <- getOption("BASE_URL")
+
+  on.exit(options(BASE_URL = original_base_url), add = TRUE)
+
+  options(BASE_URL = "https://example.test/metabolights/ws")
+
+  testthat::local_mocked_bindings(
+    GET = function(...) {
+      structure(list(status_code = 404), class = "response")
+    },
+    stop_for_status = function(...) {
+      stop("Not Found")
+    },
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
+    .package = "httr"
+  )
+
+  expect_error(
+    metabolighteR:::mtbls_get("/studies"),
+    "MetaboLights request failed for `/studies`: Not Found"
+  )
+})
+
+test_that("mtbls_get wraps content parsing failures", {
+  original_base_url <- getOption("BASE_URL")
+
+  on.exit(options(BASE_URL = original_base_url), add = TRUE)
+
+  options(BASE_URL = "https://example.test/metabolights/ws")
+
+  testthat::local_mocked_bindings(
+    GET = function(...) {
+      structure(list(status_code = 200), class = "response")
+    },
+    stop_for_status = function(...) NULL,
+    content = function(...) {
+      stop("bad payload")
+    },
+    timeout = function(...) NULL,
+    user_agent = function(...) NULL,
+    .package = "httr"
+  )
+
+  expect_error(
+    metabolighteR:::mtbls_get("/studies"),
+    "Failed to parse MetaboLights response for `/studies`: bad payload"
+  )
 })
