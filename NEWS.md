@@ -1,3 +1,8 @@
+# metabolighteR v0.1.6
+* Harden API wrapper request handling and error reporting
+* Add request timeout support and safer URL handling for downloads
+* Expand tests to cover API error paths and restore 100% test coverage
+
 # metabolighteR v0.1.5
 * Function for searching metabolites
 * Minior housekeeping
